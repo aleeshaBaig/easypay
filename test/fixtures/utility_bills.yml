@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consumer_id: 1
+  expected_reading_day: 1
+  expected_issuance_day: 1
+  expected_due_day: 1
+  user: one
+  utility_bill_category: one
+  company: one
+
+two:
+  consumer_id: 1
+  expected_reading_day: 1
+  expected_issuance_day: 1
+  expected_due_day: 1
+  user: two
+  utility_bill_category: two
+  company: two

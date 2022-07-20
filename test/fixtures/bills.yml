@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 9.99
+  late_fee: 9.99
+  reading_date: 2022-07-19
+  issuance_date: 2022-07-19
+  due_date: 2022-07-19
+  status: 1
+  user: one
+  utility_bill: one
+
+two:
+  amount: 9.99
+  late_fee: 9.99
+  reading_date: 2022-07-19
+  issuance_date: 2022-07-19
+  due_date: 2022-07-19
+  status: 1
+  user: two
+  utility_bill: two

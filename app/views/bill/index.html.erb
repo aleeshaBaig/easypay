@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>My Bills</h2>
+  <table border="1" >   
+    <tr>   
+      <th>Sr. #</th>
+      <th>Amount</th>   
+      <th>Late_Fee</th>   
+      <th>Reading Date</th>
+      <th>Issuance Date</th>
+      <th>Due Date</th> 
+      <th>Status</th>   
+    </tr>
+    <% @bills.each_with_index do |bill, index| %>
+      <tr>
+        <td><%= index +1 %></td>
+        <td><%= bill.amount %></td>
+        <td><%= bill.late_fee %></td>
+        <td><%= bill.reading_date %></td>
+        <td><%= bill.issuance_date %></td>
+        <td><%= bill.due_date %></td>
+        <td><%= bill.status %></td> 
+      </tr> 
+    <% end %>   
+  </table> 
+</div>
