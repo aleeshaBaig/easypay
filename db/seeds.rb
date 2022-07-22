@@ -1,48 +1,110 @@
-=begin
-     utility_bill_categories = UtilityBillCategory.create(
-     [{ name:"Electricity",description:"We provide you electricity"},
-      {name:"Gas",description:"We provide you Gas"},
-      {name:"Water",description:"We provide you water"},
-      {name:"Internet",description:"We provide you Internet"}
-     ]
-     )
-=end
-   
-=begin
-companies =Company.create(
-            [{name:"LESCO",utility_bill_category_id:1},{name:"FESCO",utility_bill_category_id:1},
-            {name:"GEPCO",utility_bill_category_id: 1},{name:"K-Electric",utility_bill_category_id: 1},
-            {name:"SNGPL",utility_bill_category_id: 2}, {name:"Sui", utility_bill_category_id:2},
-            {name:"PTCL",utility_bill_category_id: 3},  {name:"Stromfiber",utility_bill_category_id:3},
-            {name:"WASA",utility_bill_category_id: 4}
-        ]
-         )
-=end    
-=begin     
-      1.times do |i|
-        utility_bill=UtilityBill.create(
-            consumer_id: 5647,
-            expected_reading_day: 3,
-            expected_issuance_day: 5,
-            expected_due_day: 15,
-            user_id: 1, 
-            utility_bill_category_id: 1,
-            company_id: 1
+# Default Seed
 
-        )
-      end
-=end      
-    
-=begin    
-Bill.create(
-        amount: 3500,
-        late_fee: 25,
-        reading_date: DateTime.strptime("09/25/2022 8:00", "%m/%d/%Y %H:%M"),
-        issuance_date: DateTime.strptime("09/26/2022 8:00", "%m/%d/%Y %H:%M"),
-        due_date: DateTime.strptime("10/05/2022 8:00", "%m/%d/%Y %H:%M"),
-        status:1,
-        user_id: 37,
-        utility_bill_id: 24,
-        billing_month: "July"
-    )
-=end
+default_data = [
+  {
+    name: "Electricity",
+    description: "We provide you Electricity",
+    companies: [
+      {
+        name: "FESCO",
+        description: "Faisalabad Electricity Supply Company"
+      },
+      {
+        name: "GEPCO",
+        description: "Gujranwala Electric Power Company"
+      },
+      {
+        name: "IESCO",
+        description: "Islamabad Electricity Supply Company"
+      },
+      {
+        name: "K-Electric",
+        description: "Karachi Electric"
+      },
+      {
+        name: "LESCO",
+        description: "Lahore Electricity Supply Company"
+      },
+      {
+        name: "MEPCO",
+        description: "Multan Electricity Power Company"
+      },
+      {
+        name: "PESCO",
+        description: "Peshawer Electricity Supply Company"
+      },
+      {
+        name: "QESCO",
+        description: "Quetta Electricity Supply Company"
+      },
+      {
+        name: "TESCO",
+        description: "Tribal Electricity Supply Company"
+      }
+    ]
+  },
+  {
+    name: "Gas",
+    description: "We provide you Gas",
+    companies: [
+      {
+        name: "SNGPL",
+        description: "Sui Northern Gas Pipelines Limited"
+      },
+      {
+        name: "SSGC",
+        description: "Sui Southern Gas Company"
+      }
+    ]
+  },
+  {
+    name: "Water",
+    description: "We provide you Water",
+    companies: [
+      {
+        name: "LWASA",
+        description: "Lahore Water And Sanitation Agency"
+      },
+      {
+        name: "FWASA",
+        description: "Faisalabad Water And Sanitation Agency"
+      }
+    ]
+  },
+  {
+    name: "Internet",
+    description: "We provide you Internet",
+    companies: [
+      {
+        name: "PTCL",
+        description: "Pakistan Telecommunication Company Ltd"
+      },
+      {
+        name: "Wateen",
+        description: "Wateen Telecom is a converged communication services provider based in Lahore, Pakistan, and was a sister concern of Warid Telecom"
+      },
+      {
+        name: "NayaTel",
+        description: "A Premium Triple Play (Internet, Cable TV, Phone) Service provider.High Speed FTTH Internet Infrastructure"
+      }
+    ]
+  }
+]
+
+# Create Utility Bill Categories
+begin
+  puts "Creating UtlityBillCategories and Companies"
+  default_data.each do |data|
+    name = data[:name]
+    description = data[:description]
+    companies = data[:companies]
+
+    utility_bill_category = UtilityBillCategory.create!(name: name, description: description)
+    companies.each do |company|
+      name = company[:name]
+      description = company[:description]
+      Company.create!(name: name, utility_bill_category_id: utility_bill_category.id)
+    end
+    puts "UtilityBillCategories and Companies created successfully."
+  end
+end
