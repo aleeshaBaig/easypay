@@ -1,6 +1,6 @@
 <div class="container">
-<h2>My Bills</h2>
-<table border="1" >   
+<h2 style="background-color: cornflowerblue;">My Bills</h2>
+<table border="1"  style="width: -webkit-fill-available;">   
   <tr>   
     <th>Sr. #</th>
     <th>Amount</th>   
@@ -18,7 +18,7 @@
       <td><%= bill.reading_date %></td>
       <td><%= bill.issuance_date %></td>
       <td><%= bill.due_date %></td>
-      <td><%= bill.status %></td> 
+      <td><button class="btn btn-secondary"><%= bill.status %></td></button></td>
     </tr> 
   <% end %>   
 </table> 

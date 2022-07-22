@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
    root 'home#index'
-  #  root'bill#index'
    resources :utility_bills
    resources :bill
  
