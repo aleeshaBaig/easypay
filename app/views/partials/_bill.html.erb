@@ -22,7 +22,7 @@
       <td><button class="btn btn-danger">
       <% bill.status %>
       <% if bill.status = 1 %>
-      <%= link_to"Pay Now", bills_path %>
+      <%= link_to"Pay Now", root_path %>
       <% else %>
       <%= link_to'Paid', root_path %>
       <% end %>
