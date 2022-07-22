@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_21_054337) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_110916) do
   create_table "bills", force: :cascade do |t|
     t.decimal "amount"
     t.decimal "late_fee"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_21_054337) do
     t.integer "utility_bill_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "billing_month"
     t.index ["user_id"], name: "index_bills_on_user_id"
     t.index ["utility_bill_id"], name: "index_bills_on_utility_bill_id"
   end

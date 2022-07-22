@@ -3,4 +3,7 @@ class ApplicationController < ActionController::Base
      def after_sign_in_path_for(resources)
         root_path
      end
+     def index
+    @utility_bills = current_user.utility_bill
+   end
 end
