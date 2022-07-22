@@ -1,5 +1,6 @@
 <div class="container">
 <h2 style="background-color: cornflowerblue;">My Bills</h2>
+ 
 <table border="1"  style="width: -webkit-fill-available;">   
   <tr>   
     <th>Sr. #</th>
@@ -18,7 +19,14 @@
       <td><%= bill.reading_date %></td>
       <td><%= bill.issuance_date %></td>
       <td><%= bill.due_date %></td>
-      <td><button class="btn btn-secondary"><%= bill.status %></td></button></td>
+      <td><button class="btn btn-danger">
+      <% bill.status %>
+      <% if bill.status = 1 %>
+      <%= link_to"Pay Now", bills_path %>
+      <% else %>
+      <%= link_to'Paid', root_path %>
+      <% end %>
+      </button></td>
     </tr> 
   <% end %>   
 </table> 

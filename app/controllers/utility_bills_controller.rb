@@ -20,7 +20,7 @@ before_action :authenticate_user!
      
 
     if @utility_bill.save
-      redirect_to utility_bills_path
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end

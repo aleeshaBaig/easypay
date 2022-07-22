@@ -5,4 +5,7 @@ before_action :authenticate_user!
      @bills = current_user.bills
 
     end
+    def show
+      @bills = Bill.find(params[:id])
+      end
 end

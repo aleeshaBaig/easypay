@@ -56,14 +56,15 @@
     #   end
     
     Bill.create(
-        amount: 3000,
+        amount: 3500,
         late_fee: 25,
         reading_date: DateTime.strptime("09/25/2022 8:00", "%m/%d/%Y %H:%M"),
         issuance_date: DateTime.strptime("09/26/2022 8:00", "%m/%d/%Y %H:%M"),
         due_date: DateTime.strptime("10/05/2022 8:00", "%m/%d/%Y %H:%M"),
         status:1,
-        user_id: 21,
-        utility_bill_id: 2
+        user_id: 33,
+        utility_bill_id: 20,
+        billing_month: "July"
     )
 #     category_list = [
 #   [ "Electricity", "We are provide electricity" ],
