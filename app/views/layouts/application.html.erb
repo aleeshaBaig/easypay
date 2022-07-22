@@ -15,6 +15,7 @@
    
   <% if user_signed_in? %>
   <%= link_to'Sign Out', destroy_user_session_path, class:"btn btn-primary", data: { turbo_method: :delete} %>
+  <%= current_user.email %>
   <% else %>
   <%= link_to'Sign In', new_user_session_path, class:"dropdown-item" %> 
   <% end %>

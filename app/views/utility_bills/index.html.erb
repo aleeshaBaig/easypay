@@ -1,5 +1,7 @@
  <div class="container">
   <h2>Utilities</h2>
+  <%= link_to'Add New Bill', new_utility_bill_url %>
+
   <table border="1" >   
     <tr>   
       <th>Sr. #</th>
@@ -23,5 +25,4 @@
     <% end %>   
   </table> 
 </div>
-<%= link_to'Add New Bill', new_utility_bill_url %>
 <%= link_to'Back to home', bill_index_path %>

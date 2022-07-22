@@ -1,1 +1,30 @@
- 
+<div class="container">
+<h2>Utilities</h2>
+<button class="btn btn-dark">
+<%= link_to'Add New Bill', new_utility_bill_url %>
+</button>
+
+<table border="1" >   
+  <tr>   
+    <th>Sr. #</th>
+    <th>Consumer Id</th>   
+    <th>Category</th>   
+    <th>Company</th>
+    <th>Expected Reading Day</th>
+    <th>Expected Issuance Day</th>
+    <th>Expected Due Date</th> 
+  </tr>
+  <% @utility_bills.each_with_index do |utility_bill, index| %>
+    <tr>
+      <td><%= index +1 %></td>
+      <td><%= utility_bill.consumer_id %></td>
+      <td><%= utility_bill.utility_bill_category.name %></td>
+      <td><%= utility_bill.company.name%></td>
+      <td><%= utility_bill.expected_reading_day %></td>
+      <td><%= utility_bill.expected_issuance_day %></td>
+      <td><%= utility_bill.expected_due_day %></td>
+     </tr> 
+  <% end %>   
+</table> 
+</div>
+ <%= link_to'Back to home', bill_index_path %>

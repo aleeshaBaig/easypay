@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
-    before_action :authenticate_user!
+before_action :authenticate_user!
    def index
-    @bills =current_user.bills
-   end
+     @utility_bills = current_user.utility_bill
+     @bills = current_user.bills
+
+    end
 end
