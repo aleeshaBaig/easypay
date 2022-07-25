@@ -1,4 +1,3 @@
 class UtilityBillCategory < ApplicationRecord
-  validates :name, uniqueness: true
-    has_many :companies
+     has_many :companies, dependent: :destroy
 end

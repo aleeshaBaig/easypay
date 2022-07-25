@@ -17,12 +17,23 @@
   <% @utility_bills.each_with_index do |utility_bill, index| %>
     <tr>
       <td><%= index +1 %></td>
-      <td><%= utility_bill.consumer_id %></td>
+      <td><a href="/utility_bills/<%= utility_bill.id %>"><%= utility_bill.consumer_id %></a></td>
       <td><%= utility_bill.utility_bill_category.name %></td>
       <td><%= utility_bill.company.name%></td>
       <td><%= utility_bill.expected_reading_day %></td>
       <td><%= utility_bill.expected_issuance_day %></td>
       <td><%= utility_bill.expected_due_day %></td>
+      <td><button  class="btn btn-info">
+         <%= link_to "Edit", edit_utility_bill_path(utility_bill.id) %>
+         </button>
+      </td>  
+      <td><button class="btn btn-danger">
+         <%= link_to "Delete", utility_bill_path(utility_bill.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %> 
+         </button>
+      </td>           
      </tr> 
   <% end %>   
 </table> 

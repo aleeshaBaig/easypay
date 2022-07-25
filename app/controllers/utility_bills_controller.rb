@@ -25,6 +25,25 @@ before_action :authenticate_user!
       render :new, status: :unprocessable_entity
     end
   end
+  def edit
+    @utility_bill = UtilityBill.find(params[:id])
+  end
+  def update
+    @utility_bill = UtilityBill.find(params[:id])
+
+    if @utility_bill.update(utility_bill_params)
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+ 
+  def destroy
+    @utility_bill = UtilityBill.find(params[:id])
+    @utility_bill.destroy
+
+    redirect_to root_path, status: :see_other
+  end
   
 
   private
