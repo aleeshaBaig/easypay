@@ -1,5 +1,8 @@
 import { Application } from "@hotwired/stimulus"
+// import Rails from '@rails/ujs';
 
+import jquery from 'jquery'
+window.$ = jquery
 const application = Application.start()
 
 // Configure Stimulus development experience

@@ -1,10 +1,12 @@
 <div class="container">
 <h2 style="background-color: cornflowerblue;">My Bills</h2>
  
+ 
 <table border="1"  style="width: -webkit-fill-available;">   
   <tr>   
     <th>Sr. #</th>
     <th>Amount</th>   
+    <th>Billing Month </th>
     <th>Late_Fee</th>   
     <th>Reading Date</th>
     <th>Issuance Date</th>
@@ -15,18 +17,22 @@
     <tr>
       <td><%= index +1 %></td>
       <td><%= bill.amount %></td>
+      <td><%= bill.billing_month %></td>
       <td><%= bill.late_fee %></td>
       <td><%= bill.reading_date %></td>
       <td><%= bill.issuance_date %></td>
       <td><%= bill.due_date %></td>
-      <td><button class="btn btn-danger">
-      <% bill.status %>
-      <% if bill.status = 1 %>
-      <%= link_to"Pay Now", root_path %>
+      <td> 
+      <% if bill.status == "unpaid" %>
+       <button class="btn btn-danger"> 
+        <%= link_to "pay now", pay_bills_path(id:bill.id), data: {turbo_method: :post,turbo_confirm: "Are you sure?"}%>
+       </button>
       <% else %>
-      <%= link_to'Paid', root_path %>
+      <button class="btn btn-info" >
+      <%= link_to'Paid' , root_path %>
+      </button>
       <% end %>
-      </button></td>
+      </td>
     </tr> 
   <% end %>   
 </table> 

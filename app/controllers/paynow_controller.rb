@@ -1,0 +1,2 @@
+class PaynowController < ApplicationController
+end
