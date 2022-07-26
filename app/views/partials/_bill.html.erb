@@ -1,10 +1,26 @@
 <div class="container">
+  <div>
+      <div class="row">
+    <div class="col-md-6">
+      
+    </div>
+    <div class="col-md-3">
+      
+    </div>
+    <div class="col-md-3">
+      <button class="btn btn-dark marg" style="background-color:lightskyblue;margin-bottom:20px;margin-left: 6px;">
+      <%= link_to'Add New Bill', new_bill_url %>
+      </button>
+      <br>
+    </div>
+  </div>
+  </div>
 <h2 style="background-color: cornflowerblue;">My Bills</h2>
  
  
-<table border="1"  style="width: -webkit-fill-available;">   
+<table class="table table-striped table-bordered"  style="width: -webkit-fill-available;">   
   <tr>   
-    <th>Sr. #</th>
+    <th >Sr. #</th>
     <th>Amount</th>   
     <th>Billing Month </th>
     <th>Late_Fee</th>   
@@ -16,7 +32,7 @@
   <% @bills.each_with_index do |bill, index| %>
     <tr>
       <td><%= index +1 %></td>
-      <td><%= bill.amount %></td>
+       <td><a href="/bills/<%= bill.id %>"><%= bill.amount %></a></td>
       <td><%= bill.billing_month %></td>
       <td><%= bill.late_fee %></td>
       <td><%= bill.reading_date %></td>
