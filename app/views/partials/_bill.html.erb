@@ -47,6 +47,11 @@
       <button class="btn btn-info" >
       <%= link_to'Paid' , root_path %>
       </button>
+           <%= link_to "Delete", bill_path(bill.id), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %> 
+      </button>
       <% end %>
       </td>
     </tr> 
