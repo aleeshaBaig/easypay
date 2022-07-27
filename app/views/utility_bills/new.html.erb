@@ -12,34 +12,38 @@
 	<%= form.label :customer_id %>
 	<%= form.text_field :customer_id,class:"form-control"%>
    </div>
-   <div class="form-group">
+   <div data-controller="category">
+   	<div class="mb-3">
 	<%= form.label :Category %>
-	<%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, prompt: true, class:"form-control" %>
+	<%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, prompt: true, class:"form-control", "data-action" => "category#changeCategory"%>
    </div>
-    <div>
+   </div>
+   
+   
+    <div  class="form-group">
 	<%= form.label :Company%>
 	<%= form.collection_select :company_id, Company.all , :id, :name, prompt: true, class:"form-control" %>
     </div>
-     <div>
+     <div  class="form-group">
 	<%= form.label :expected_reading_date %>
 	<%=form.text_field  :expected_reading_day, class:"form-control"%>
     </div>
-    <div>
+    <div  class="form-group">
 	<%= form.label :expected_issuance_date %>
 	<%=form.text_field :expected_issuance_day, class:"form-control" %>
     </div>
-    <div>
+    <div  class="form-group">
 	<%= form.label :expected_due_date %>
 	<%=form.text_field :expected_due_day,class:"form-control" %>
     </div>
-    <div>
+    <div  class="form-group">
 	<%= form.label :focal_person %>
 	<%= form.text_field :focal_person,class:"form-control" %>
     </div>
-   <div>
+   <div  class="form-group">
  	<%=form.hidden_field :user_id,  value:current_user.id %>
    </div>
-   <div>
+   <div  class="form-group">
 	<%= form.submit %>
    </div> 
    <% end %>
