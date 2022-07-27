@@ -12,16 +12,12 @@
 
   <body>
   <div class="container">
- 
-   
-  <% if user_signed_in? %>
-  <%= current_user.email %>
-  <%= link_to'Sign Out', destroy_user_session_path, class:"btn btn-primary", data: { turbo_method: :delete} %>
-  <% else %>
-  <%= link_to'Sign In', new_user_session_path, class:"dropdown-item" %> 
-  <% end %>
-  
-  <%= yield %>
+    <div class="row">
+      <div class="col-md-12">
+           <%= yield %>
+
+      </div>
+    </div>
   </div>
 </body>
 </html>
