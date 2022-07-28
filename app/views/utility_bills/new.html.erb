@@ -24,7 +24,7 @@
    </div>
   <div  class="form-group" id="company_field">
 	<%= form.label :Company%>
-	<%= form.collection_select :company_id, Company.where("utility_bill_category_id = ?", 1) , :id, :name, prompt: true,  class:"company_selection", data: { category_target: "compnaySelect"} %>
+	<%= form.collection_select :company_id, getCompanies(2), :id, :name, prompt: true,  class:"company_selection", data: {category_target: "compnaySelect"} %>
     </div>
      <div  class="form-group">
 	<%= form.label :expected_reading_date %>
@@ -47,7 +47,7 @@
    </div>
    <div  class="form-group">
 	<%= form.submit %>
-   </div> 
+   </div>
    <% end %>
 </div>
 <%= link_to'Back to home', root_path %>
