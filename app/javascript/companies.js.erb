@@ -1,0 +1,25 @@
+var companies = new Array();
+<% for company in @companies -%>
+  companies.push(new Array(<%= company.utility_bill_category_id_id %>, '<%=h company.name %>', <%= company.id %>));
+<% end -%>
+
+function utility_bill_category_idSelected() {
+  utility_bill_category_id_id = $('person_utility_bill_category_id_id').getValue();
+  options = $('person_company_id').options;
+  options.length = 1;
+  companies.each(function(company) {
+    if (company[0] == utility_bill_category_id_id) {
+      options[options.length] = new Option(company[1], company[2]);
+    }
+  });
+  if (options.length == 1) {
+    $('company_field').hide();
+  } else {
+    $('company_field').show();
+  }
+}
+
+document.observe('dom:loaded', function() {
+  utility_bill_category_idSelected();
+  $('person_utility_bill_category_id_id').observe('change', utility_bill_category_idSelected);
+});

@@ -19,14 +19,12 @@
    <div data-controller="category">
    	<div class="mb-3">
 	<%= form.label :Category %>
-	<%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, prompt: true, class:"form-control", "data-action" => "category#changeCategory"%>
+	<%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, {prompt: true}, data: {action: "change->category#change"} %>
    </div>
    </div>
-   
-   
-    <div  class="form-group">
+  <div  class="form-group" id="company_field">
 	<%= form.label :Company%>
-	<%= form.collection_select :company_id, Company.all , :id, :name, prompt: true, class:"form-control" %>
+	<%= form.collection_select :company_id, Company.where("utility_bill_category_id = ?", 1) , :id, :name, prompt: true,  class:"company_selection", data: { category_target: "compnaySelect"} %>
     </div>
      <div  class="form-group">
 	<%= form.label :expected_reading_date %>
