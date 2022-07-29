@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
    root 'home#index'
-   resources :utility_bills
+    resources :utility_bills do
+      collection do
+        get 'companies_details'
+      end
+    end
    resources :bills do
     collection do
       post "pay" 
