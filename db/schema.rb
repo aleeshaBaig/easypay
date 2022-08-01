@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_26_112906) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_27_113247) do
   create_table "bills", force: :cascade do |t|
     t.decimal "amount"
     t.decimal "late_fee"
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_26_112906) do
     t.string "focal_person"
     t.string "customer_name"
     t.string "customer_id"
+    t.string "nickname"
     t.index ["company_id"], name: "index_utility_bills_on_company_id"
     t.index ["user_id"], name: "index_utility_bills_on_user_id"
     t.index ["utility_bill_category_id"], name: "index_utility_bills_on_utility_bill_category_id"

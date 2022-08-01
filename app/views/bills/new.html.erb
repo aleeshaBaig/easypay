@@ -38,6 +38,10 @@
 	<%= form.text_field :utility_bill_id,class:"form-control" %>
 </div>
 <div class="form-group">
+<%= form.label :utility_bill_id %>
+<%= form.collection_select :utility_bill_id, UtilityBill.all , :id, :nickname, {prompt: true}, class:"form-control" %>
+</div>
+<div class="form-group">
 	<%= form.submit %>
 </div> 
 <% end %>

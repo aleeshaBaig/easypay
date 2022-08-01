@@ -58,6 +58,6 @@ before_action :authenticate_user!
 
   private
     def utility_bill_params
-      params.require(:utility_bill).permit(:consumer_id,:utility_bill_category_id, :company_id, :expected_reading_day, :expected_issuance_day, :expected_due_day, :user_id, :customer_name,:customer_id, :focal_person)
+      params.require(:utility_bill).permit(:consumer_id,:utility_bill_category_id, :company_id, :expected_reading_day, :expected_issuance_day, :expected_due_day, :user_id, :customer_name,:customer_id, :focal_person, :nickname)
     end
 end
