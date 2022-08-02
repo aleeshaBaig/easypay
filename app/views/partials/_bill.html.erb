@@ -17,7 +17,8 @@
   </div>
 <h2 style="background-color: cornflowerblue; font-color:black;"><%= link_to'My Bills',bills_url %></h2>
    <%= form_tag root_path, :method => 'get' do %>
-   <%= text_field_tag :search, params[:search], class:""%>
+    <span class="fa-solid fa-magnifying-glass"></span>
+   <%= text_field_tag :search, params[:search], class:""%><i class="fa-solid fa-magnifying-glass"></i>
    <%= submit_tag "Search"%>
    <% end %>
    <br>
