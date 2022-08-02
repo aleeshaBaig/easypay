@@ -1,8 +1,11 @@
 class BillsController < ApplicationController
 before_action :authenticate_user!
 before_action :get_bill, only: [:show, :pay]
+
     def index
-    @bills = current_user.bills
+    @bills = current_user.bills.where(["billing_month LIKE ?","%#{params[:search]}%"])
+ 
+
     end
     def show
      @bill = Bill.find(params[:id])

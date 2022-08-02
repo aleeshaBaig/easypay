@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :utility_bills do
       collection do
         get 'companies_details'
+        get'search'
       end
     end
    resources :bills do
