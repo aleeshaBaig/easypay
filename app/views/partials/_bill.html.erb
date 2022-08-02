@@ -15,8 +15,12 @@
     </div>
   </div>
   </div>
-<h2 style="background-color: cornflowerblue;">My Bills</h2>
- 
+<h2 style="background-color: cornflowerblue; font-color:black;"><%= link_to'My Bills',bills_url %></h2>
+   <%= form_tag root_path, :method => 'get' do %>
+   <%= text_field_tag :search, params[:search], class:""%>
+   <%= submit_tag "Search"%>
+   <% end %>
+   <br>
  
 <table class="table table-striped table-bordered"  style="width: -webkit-fill-available;">   
   <tr>   

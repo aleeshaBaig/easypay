@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="row">
-    <h2 style="background-color: cornflowerblue;">Utilities</h2>
+    <h2 style="background-color: cornflowerblue;"><%= link_to'Utilities',utility_bills_url %></h2>
 
 
  <table class="table table-striped table-bordered" style="width: -webkit-fill-available;">     
@@ -35,6 +35,7 @@
     <th>Nickname</th>
     <th>Category</th>   
     <th>Company</th>
+    <th>Nickname</th>
     <th>Expected Reading Day</th>
     <th>Expected Issuance Day</th>
     <th>Expected Due Date</th> 
@@ -51,6 +52,7 @@
       <td><%= utility_bill.nickname %></td>
       <td><%= utility_bill.utility_bill_category.name %></td>
       <td><%= utility_bill.company.name%></td>
+      <td><%= utility_bill.nickname%></td>
       <td><%= utility_bill.expected_reading_day %></td>
       <td><%= utility_bill.expected_issuance_day %></td>
       <td><%= utility_bill.expected_due_day %></td>

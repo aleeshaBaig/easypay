@@ -1,7 +1,17 @@
 class UtilityBillsController < ApplicationController
 before_action :authenticate_user!
 
-   def index
+  def companies_details
+    utility_bill_category_id = params[:utility_bill_category_id]
+    if utility_bill_category_id.present?
+      companies = Company.select("id, name").where(utility_bill_category_id: utility_bill_category_id)
+      
+      render json: {status: true, data: companies.as_json}, status: 200
+    else
+      render json: {status: false, data: []}, status: 400
+    end
+  end
+  def index
     @utility_bills = current_user.utility_bill
   end
 
