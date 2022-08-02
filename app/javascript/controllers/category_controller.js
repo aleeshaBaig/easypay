@@ -9,20 +9,20 @@ export default class extends Controller {
 
       const utility_bill_category_id = event.target.value;
       const url = "/utility_bills/companies_details";
-      
+
       Rails.ajax({
          type: "GET",
          url: url,
          data: "utility_bill_category_id=" + utility_bill_category_id,
          success: function(response){
             if(response.status == true){
-               
+
                // $("#utility_bill_company_id").removeAttr('disabled');
                $("#utility_bill_company_id option").remove();
 
                let rdata = response.data;
 
-               // Fill sub category select 
+               // Fill sub category select
                if (rdata.length > 0){
                   var row = "<option value=\"" + "" + "\">" + "Select" + "</option>";
                   $(row).appendTo("#utility_bill_company_id");

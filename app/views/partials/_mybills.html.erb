@@ -32,6 +32,7 @@
     <th>Consumer Id</th>
     <th>Customer Name</th>
     <th>Customer Id </th>
+    <th>Nickname</th>
     <th>Category</th>   
     <th>Company</th>
     <th>Nickname</th>
@@ -47,14 +48,16 @@
       <td><%= index +1 %></td>
       <td><a href="/utility_bills/<%= utility_bill.id %>"><%= utility_bill.consumer_id %></a></td>
       <td><%= utility_bill.customer_name %></td>
-      <td><%= utility_bill.customer_id %><?td>
+      <td><%= utility_bill.customer_id %></td>
+      <td><%= utility_bill.nickname %></td>
       <td><%= utility_bill.utility_bill_category.name %></td>
       <td><%= utility_bill.company.name%></td>
       <td><%= utility_bill.nickname%></td>
       <td><%= utility_bill.expected_reading_day %></td>
       <td><%= utility_bill.expected_issuance_day %></td>
       <td><%= utility_bill.expected_due_day %></td>
-      <td><%= utility_bill.focal_person %><?td>
+      <td><%= utility_bill.focal_person %></td>
+
       <td><button  class="btn btn-info">
           <%= link_to "Edit", edit_utility_bill_path(utility_bill.id)  %> 
          </button>
