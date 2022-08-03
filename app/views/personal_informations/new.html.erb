@@ -1,0 +1,13 @@
+
+<%= form_with model: @personal_information do |form| %>
+  <div>
+    <%= form.label :first_name %><br>
+    <%= form.text_field :first_name %>
+  </div>
+  <div>
+  <div class="form-control">
+  <%= form.file_field :image %>
+  </div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,18 @@
+ <h1>Display Personal Information</h1>
+
+<ul>
+  <% @personal_information.each do |personal_information| %>
+    <li>
+      <%= link_to personal_information.first_name, personal_information %>
+    </li>
+    <li>
+      <%= image_tag personal_information.image.url %>
+    </li>
+    
+  <% end %>
+</ul>
+
+ 
+ <%= link_to "New ", new_personal_information_path %>
+ 
+
