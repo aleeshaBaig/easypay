@@ -1,0 +1,38 @@
+ 
+
+
+<%= form_with model:@emergency_contact do |form| %>
+  
+
+  <div>
+    <%= form.label :emergency_contact_name, style: "display: block" %>
+    <%= form.text_field :emergency_contact_name %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact_relation, style: "display: block" %>
+    <%= form.text_field :emergency_contact_relation %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact_mobile, style: "display: block" %>
+    <%= form.text_field :emergency_contact_mobile %>
+  </div>
+
+  <div>
+    <%= form.label :residence_address, style: "display: block" %>
+    <%= form.text_field :residence_address %>
+  </div>
+
+  <div>
+    <%= form.label :permanent_address, style: "display: block" %>
+    <%= form.text_field :permanent_address %>
+  </div>
+ 
+  <div  class="form-group">
+ 	<%=form.hidden_field :user_id,  value:current_user.id %>
+   </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<%= form_with model:@education do |form| %>
+  
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :major, style: "display: block" %>
+    <%= form.text_field :major %>
+  </div>
+
+  <div>
+    <%= form.label :institute, style: "display: block" %>
+    <%= form.text_field :institute %>
+  </div>
+
+  <div>
+    <%= form.label :date, style: "display: block" %>
+    <%= form.text_field :date %>
+  </div>
+  <div  class="form-group">
+ 	<%=form.hidden_field :user_id,  value:current_user.id %>
+   </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

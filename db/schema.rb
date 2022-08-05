@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_04_104936) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_05_095437) do
   create_table "additional_informations", force: :cascade do |t|
     t.string "place_of_birth"
     t.string "domicile"
@@ -54,10 +54,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_104936) do
     t.string "office_phone"
     t.string "personal_email"
     t.string "email_offical"
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_contact_informations_on_user_id"
+    t.integer "user_id"
   end
 
   create_table "dependents", force: :cascade do |t|
@@ -161,7 +160,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_04_104936) do
   add_foreign_key "bills", "users"
   add_foreign_key "bills", "utility_bills"
   add_foreign_key "companies", "utility_bill_categories"
-  add_foreign_key "contact_informations", "users"
   add_foreign_key "dependents", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "emergency_contacts", "users"

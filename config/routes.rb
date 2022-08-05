@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :contact_informations
+  resources :emergency_contacts
   resources :dependents
   resources :educations
   devise_for :users

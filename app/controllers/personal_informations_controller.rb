@@ -6,6 +6,7 @@ class PersonalInformationsController < ApplicationController
       @personal_information = PersonalInformation.all
       @contact_informations = ContactInformation.all
       @dependents = Dependent.all
+      @emergency_contacts = EmergencyContact.all
 
     end
   

@@ -1,0 +1,2 @@
+module EmergencyContacts::IndexHelper
+end
