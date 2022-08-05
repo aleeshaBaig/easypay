@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :contact_informations
+  resources :dependents
+  resources :educations
   devise_for :users
   resources :personal_informations
   resources :utility_bills do

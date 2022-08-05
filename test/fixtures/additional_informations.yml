@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  place_of_birth: MyString
+  domicile: MyString
+  nationality: MyString
+  passport_number: MyString
+  blood_group: MyString
+  user: one
+
+two:
+  place_of_birth: MyString
+  domicile: MyString
+  nationality: MyString
+  passport_number: MyString
+  blood_group: MyString
+  user: two

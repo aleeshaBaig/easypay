@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  emergency_contact_name: MyString
+  emergency_contact_relation: MyString
+  emergency_contact_mobile: MyString
+  residence_address: MyString
+  permanent_address: MyString
+  user: one
+
+two:
+  emergency_contact_name: MyString
+  emergency_contact_relation: MyString
+  emergency_contact_mobile: MyString
+  residence_address: MyString
+  permanent_address: MyString
+  user: two

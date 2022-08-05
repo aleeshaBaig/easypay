@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_03_110424) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_04_104936) do
+  create_table "additional_informations", force: :cascade do |t|
+    t.string "place_of_birth"
+    t.string "domicile"
+    t.string "nationality"
+    t.string "passport_number"
+    t.string "blood_group"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_additional_informations_on_user_id"
+  end
+
   create_table "bills", force: :cascade do |t|
     t.decimal "amount"
     t.decimal "late_fee"
@@ -35,11 +47,74 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_110424) do
     t.index ["utility_bill_category_id"], name: "index_companies_on_utility_bill_category_id"
   end
 
+  create_table "contact_informations", force: :cascade do |t|
+    t.string "mobile"
+    t.string "residence_phone"
+    t.string "coordinator"
+    t.string "office_phone"
+    t.string "personal_email"
+    t.string "email_offical"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contact_informations_on_user_id"
+  end
+
+  create_table "dependents", force: :cascade do |t|
+    t.string "name"
+    t.string "relation"
+    t.string "phone"
+    t.string "mobile"
+    t.string "date_of_birth"
+    t.string "contact_number"
+    t.string "address"
+    t.string "cnic"
+    t.string "nationality"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_dependents_on_user_id"
+  end
+
+  create_table "educations", force: :cascade do |t|
+    t.string "title"
+    t.string "major"
+    t.string "institute"
+    t.string "date"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_educations_on_user_id"
+  end
+
+  create_table "emergency_contacts", force: :cascade do |t|
+    t.string "emergency_contact_name"
+    t.string "emergency_contact_relation"
+    t.string "emergency_contact_mobile"
+    t.string "residence_address"
+    t.string "permanent_address"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_emergency_contacts_on_user_id"
+  end
+
   create_table "personal_informations", force: :cascade do |t|
     t.text "first_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.string "last_name"
+    t.string "date_of_birth"
+    t.integer "marital_status"
+    t.string "religion"
+    t.string "cnic"
+    t.string "department"
+    t.string "employment_type"
+    t.string "date_of_joining"
+    t.string "project"
+    t.string "designation"
+    t.string "employee_code"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,7 +137,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_110424) do
   end
 
   create_table "utility_bills", force: :cascade do |t|
-    t.integer "consumer_id"
+    t.string "consumer_id"
     t.integer "expected_reading_day"
     t.integer "expected_issuance_day"
     t.integer "expected_due_day"
@@ -82,9 +157,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_03_110424) do
     t.index ["utility_bill_category_id"], name: "index_utility_bills_on_utility_bill_category_id"
   end
 
+  add_foreign_key "additional_informations", "users"
   add_foreign_key "bills", "users"
   add_foreign_key "bills", "utility_bills"
   add_foreign_key "companies", "utility_bill_categories"
+  add_foreign_key "contact_informations", "users"
+  add_foreign_key "dependents", "users"
+  add_foreign_key "educations", "users"
+  add_foreign_key "emergency_contacts", "users"
   add_foreign_key "utility_bills", "companies"
   add_foreign_key "utility_bills", "users"
   add_foreign_key "utility_bills", "utility_bill_categories"

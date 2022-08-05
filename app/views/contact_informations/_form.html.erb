@@ -1,0 +1,49 @@
+<%= form_with(model: contact_information) do |form| %>
+  <% if contact_information.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(contact_information.errors.count, "error") %> prohibited this contact_information from being saved:</h2>
+
+      <ul>
+        <% contact_information.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :mobile, style: "display: block" %>
+    <%= form.text_field :mobile %>
+  </div>
+
+  <div>
+    <%= form.label :residence_phone, style: "display: block" %>
+    <%= form.text_field :residence_phone %>
+  </div>
+
+  <div>
+    <%= form.label :coordinator, style: "display: block" %>
+    <%= form.text_field :coordinator %>
+  </div>
+
+  <div>
+    <%= form.label :office_phone, style: "display: block" %>
+    <%= form.text_field :office_phone %>
+  </div>
+
+  <div>
+    <%= form.label :personal_email, style: "display: block" %>
+    <%= form.text_field :personal_email %>
+  </div>
+
+  <div>
+    <%= form.label :email_offical, style: "display: block" %>
+    <%= form.text_field :email_offical %>
+  </div>
+  <div  class="form-group">
+ 	<%=form.hidden_field :user_id,  value:current_user.id %>
+   </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

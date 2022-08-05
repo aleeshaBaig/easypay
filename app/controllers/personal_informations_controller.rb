@@ -4,6 +4,9 @@ class PersonalInformationsController < ApplicationController
    
     def index
       @personal_information = PersonalInformation.all
+      @contact_informations = ContactInformation.all
+      @dependents = Dependent.all
+
     end
   
     def show
@@ -32,7 +35,7 @@ class PersonalInformationsController < ApplicationController
       @personal_information = PersonalInformation.find(params[:id])
   
       if   @personal_information.update(personal_information_params)
-        redirect_to   @personal_information 
+        redirect_to   personal_information_path 
       else
         render :edit, status: :unprocessable_entity
       end
@@ -40,6 +43,6 @@ class PersonalInformationsController < ApplicationController
   
     private
       def  personal_information_params
-        params.require(:personal_information).permit(:image,:first_name, :image_cache)
+        params.require(:personal_information).permit(:image,:first_name, :image_cache, :last_name, :date_of_birth, :marital_status, :religion, :cnic, :project, :department, :employment_type, :date_of_joining, :designation,:employee_code)
       end
   end
