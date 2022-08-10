@@ -3,7 +3,7 @@ class PersonalInformationsController < ApplicationController
 
    
     def index
-      @personal_information = PersonalInformation.all
+      @personal_informations = PersonalInformation.all
       @contact_informations = ContactInformation.all
       @dependents = Dependent.all
       @emergency_contacts = EmergencyContact.all
@@ -20,6 +20,7 @@ class PersonalInformationsController < ApplicationController
   
     def create
       @personal_information  = PersonalInformation.new(personal_information_params)
+       
   
       if @personal_information.save
         redirect_to @personal_information 
@@ -44,6 +45,6 @@ class PersonalInformationsController < ApplicationController
   
     private
       def  personal_information_params
-        params.require(:personal_information).permit(:image,:first_name, :image_cache, :last_name, :date_of_birth, :marital_status, :religion, :cnic, :project, :department, :employment_type, :date_of_joining, :designation,:employee_code)
+        params.require(:personal_information).permit(:image,:first_name, :image_cache, :last_name, :date_of_birth, :marital_status, :religion, :cnic, :project, :department, :employment_type, :date_of_joining, :designation,:employee_code, :user_id)
       end
   end

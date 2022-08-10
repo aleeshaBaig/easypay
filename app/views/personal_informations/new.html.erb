@@ -1,57 +1,70 @@
-
+<div class="container">
+  <div class="row">
+  <div class="col-md-3">
+  </div>
+  <div class="col-md-6">
+ 
 <%= form_with model: @personal_information do |form| %>
   <div>
   <div class="form-control">
-  <%= form.file_field :image %>
+  <%= form.file_field :image,  class:"form-control" %>
   </div>
-  <div class="col-sm-3">
+  <div>
     <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name,  class:"form-control"  %>
   </div>
   <div>
   <%= form.label :last_name %><br>
-  <%= form.text_field :last_name %>
+  <%= form.text_field :last_name, class:"form-control"  %>
   </div>
 <div>
 <%= form.label :date_of_birth %><br>
-<%= form.text_field :date_of_birth %>
+<%= form.date_field :date_of_birth,  class:"form-control"  %>
 </div>
 <div>
-<%= form.label :marital_status %><br>
-<%= form.text_field :marital_status %>
+<%= form.select :marital_status, options_for_select(PersonalInformation.marital_statuses.keys), class:"form-control" %>
 </div>
 <div>
-<%= form.label :religion %><br>
-<%= form.text_field :religion %>
+
+<%= form.select :religion, options_for_select(PersonalInformation.religions.keys), class:"form-control" %>
 </div>
   <div>
 <%= form.label :cnic %><br>
-<%= form.text_field :cnic %>
+<%= form.text_field :cnic,  class:"form-control"  %>
 </div>
 <div>
 <%= form.label :project %><br>
-<%= form.text_field :project %>
+<%= form.text_field :project, class:"form-control"  %>
 </div>
 <div>
 <%= form.label :departemnt %><br>
-<%= form.text_field :department %>
+<%= form.text_field :department,  class:"form-control"  %>
 </div>
-<div>
-<%= form.label :employment_type %><br>
-<%= form.text_field :employment_type %>
+<div class="dropdown">
+<%= form.select :employment_type, options_for_select(PersonalInformation.employment_types.keys),   class:"dropdown-menu" %>
 </div>
 <div>
 <%= form.label :date_of_joining %><br>
-<%= form.text_field :date_of_joining %>
+<%= form.date_field :date_of_joining,  class:"form-control"  %>
 </div>
 <div>
 <%= form.label :employee_code %><br>
-<%= form.text_field :employee_code %>
+<%= form.text_field :employee_code, class:"form-control"  %>
 </div>
 <div>
 <%= form.label :designation %><br>
-<%= form.text_field :designation %>
+<%= form.text_field :designation, class:"form-control"  %>
+ 
+<div  class="form-group">
+<%=form.hidden_field :user_id,  value:current_user.id %>
+</div>
+<div>
 </div>
     <%= form.submit %>
   </div>
 <% end %>
+</div>
+<div class="col-md-3">
+  </div>
+  <div>
+</div>

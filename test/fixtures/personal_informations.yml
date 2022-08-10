@@ -1,7 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyText
+  image: MyString
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2022-08-05
+  marital_status: 1
+  religion: 1
+  cnic: MyString
+  project: MyString
+  department: MyString
+  employment_type: 1
+  employee_code: 1
+  designation: MyString
+  date_of_joining: 2022-08-05
+  user: one
 
 two:
-  first_name: MyText
+  image: MyString
+  first_name: MyString
+  last_name: MyString
+  date_of_birth: 2022-08-05
+  marital_status: 1
+  religion: 1
+  cnic: MyString
+  project: MyString
+  department: MyString
+  employment_type: 1
+  employee_code: 1
+  designation: MyString
+  date_of_joining: 2022-08-05
+  user: two
