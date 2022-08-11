@@ -3,10 +3,11 @@ class PersonalInformationsController < ApplicationController
 
    
     def index
-      @personal_informations = PersonalInformation.all
-      @contact_informations = ContactInformation.all
-      @dependents = Dependent.all
-      @emergency_contacts = EmergencyContact.all
+       @personal_information = current_user.personal_information
+      @contact_informations = ContactInformation.all.where("contact_informations.user_id = #{current_user.id}")
+      @dependents = Dependent.all.where("dependents.user_id = #{current_user.id}")
+      @emergency_contacts = EmergencyContact.all.where("emergency_contacts.user_id = #{current_user.id}")
+
 
     end
   
@@ -37,7 +38,7 @@ class PersonalInformationsController < ApplicationController
       @personal_information = PersonalInformation.find(params[:id])
   
       if   @personal_information.update(personal_information_params)
-        redirect_to   personal_information_path 
+        redirect_to   @personal_information 
       else
         render :edit, status: :unprocessable_entity
       end

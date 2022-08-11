@@ -4,7 +4,7 @@ class PersonalInformation < ApplicationRecord
  enum employment_type: [:Regular, :Permanent]
  enum religion: [:Muslim, :Hindu, :Christian]
  enum marital_status: [:Single, :Married, :Widow, :Divorced]
- validates :date_of_birth, presence: true
+validates :date_of_birth, presence: true
 validates :marital_status, presence: true
 validates :religion, presence: true
 validates :cnic, presence: true

@@ -3,10 +3,9 @@ class EducationsController < ApplicationController
   
      
       def index
-        @personal_informations = Education.all
+        @personal_informations = Education
         @contact_informations = ContactInformation.all
-        @dependents = Dependent.all
-        @emergency_contacts = EmergencyContact.all
+         @emergency_contacts = EmergencyContact.all
         @educations = Education.all
   
       end
@@ -28,6 +27,12 @@ class EducationsController < ApplicationController
         else
           render :new, status: :unprocessable_entity
         end
+      end
+      def destroy
+        @education = Education.find(params[:id])
+        @education.destroy
+    
+        redirect_to education_path, status: :see_other
       end
     
       def edit

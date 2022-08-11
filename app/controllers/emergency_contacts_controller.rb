@@ -1,7 +1,7 @@
 class EmergencyContactsController < ApplicationController
 before_action :authenticate_user!
     def index
-      @emergency_contacts = EmergencyContact.all
+      @emergency_contacts = current_user.emergency_contacts
     end
      
     def new

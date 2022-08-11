@@ -6,7 +6,6 @@ class Dependent < ApplicationRecord
   validates :address, presence: true
   validates :cnic, presence: true
   validates :nationality, presence: true
-  validates :action, presence: true
-
+ 
 belongs_to :user
 end

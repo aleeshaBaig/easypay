@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_05_113933) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_10_111355) do
   create_table "additional_informations", force: :cascade do |t|
     t.string "place_of_birth"
     t.string "domicile"

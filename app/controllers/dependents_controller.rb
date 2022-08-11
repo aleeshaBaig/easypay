@@ -7,12 +7,7 @@ class DependentsController < ApplicationController
   def new
     @dependent = Dependent.new
   end
-  def destroy
-    @dependent = Dependent.find(params[:id])
-    @dependent.destroy
-
-    redirect_to personal_informations_path, status: :see_other
-  end
+ 
   def create
     @dependent = Dependent.new(dependent_params)
     if @dependent.save
@@ -20,6 +15,12 @@ class DependentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+  def destroy
+    @dependent = Dependent.find(params[:id])
+    @dependent.destroy
+
+    redirect_to personal_informations_path, status: :see_other
   end
   def  edit
   @dependent = Dependent.find(params[:id])    
@@ -36,6 +37,6 @@ class DependentsController < ApplicationController
   end
   private
   def dependent_params
-    params.require(:dependent).permit(:name, :relation, :phone, :mobile, :date_of_birth, :address, :cnic, :nationality, :user_id)
+    params.require(:dependent).permit(:name, :relation, :phone,:date_of_birth, :address, :cnic, :nationality, :user_id)
   end
 end

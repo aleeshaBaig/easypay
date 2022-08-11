@@ -1,254 +1,323 @@
 <style>
-body{
-   margin-top:20px;
+  body {
+    margin-top: 20px;
     text-align: left;
- }
-.main-body {
-   padding: 15px;
-}
-.card {
-   box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
-
-.card {
-   position: relative;
-   display: flex;
-   flex-direction: column;
-   min-width: 0;
-   word-wrap: break-word;
-   background-color: #fff;
-   background-clip: border-box;
-   border: 0 solid rgba(0,0,0,.125);
-   border-radius: .25rem;
-}
-.a{
-   color: white;
-}
-.card-body {
-   flex: 1 1 auto;
-   min-height: 1px;
-   padding: 1rem;
-   
-}
-
-.gutters-sm {
-   margin-right: -8px;
-   margin-left: -8px;
-}
-
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
-   padding-right: 8px;
-   padding-left: 8px;
-}
-.mb-3, .my-3 {
-   margin-bottom: 1rem!important;
-}
-
-.bg-gray-300 {
-   background-color: #e2e8f0;
-}
-.h-100 {
-   height: 100%!important;
-}
-.shadow-none {
-   box-shadow: none!important;
-}
-.style_image {
-   border-right: 1px solid #000;
-   height: 394px;
-   }
-</style>
-<div class="container">
+  }
+  
+  .main-body {
+    padding: 15px;
+  }
+  
+  .card {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .1), 0 1px 2px 0 rgba(0, 0, 0, .06);
+  }
+  
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+  }
+  
+  .a {
+    color: white;
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+  }
+  
+  .gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+  }
+  
+  .gutters-sm>.col,
+  .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+  
+  .mb-3,
+  .my-3 {
+    margin-bottom: 1rem!important;
+  }
+  
+  .bg-gray-300 {
+    background-color: '#e2e8f0';
+  }
+  
+  .h-100 {
+    height: 100%!important;
+  }
+  
+  .shadow-none {
+    box-shadow: none!important;
+  }
+  
+  .style_image {
+    border-right: 1px solid #000;
+    height: 239px;
+    margin-left: 70px;
+  }
+  </style>
+  <div class="container">
     <div class="main-body">
       <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <div class="d-flex flex-column align-items-center text-center">
-                  <% @personal_informations.each do |personal_information| %>
-                     <%= image_tag personal_information.image.url, :class => "style_image"%>
-                     <%= link_to "New ", new_personal_information_path %> |
-                      <%= link_to "Edit", edit_personal_information_path(personal_information.id) %> 
-                      
-                     <% end %>
-                    <div class="mt-3">
-                    <% @personal_informations.each do |personal_information| %>
-                     <h4> <%= personal_information.first_name %></h4>
-                     <span><%= personal_information.designation %></span>
-                     <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mt-3">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                  <% @personal_informations.each do |personal_information| %>
-                    <h6 class="mb-0">Employee Code</h6>
-                    <span class="text-secondary"> <%=  personal_information.employee_code %></span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Project</h6>
-                    <span class="text-secondary"><%= personal_information.project %></span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Department</h6>
-                    <span class="text-secondary"><%= personal_information.department %></span>
-                  </li>
-                  <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                    <h6 class="mb-0">Employment Type</h6>
-                    <span class="text-secondary"><%= personal_information.employment_type %></span>
-                  </li>
-                 <% end %>
-               </ul>
-              </div>
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+                  <% if @personal_information.present? %>
+                    <%= image_tag @personal_information.image.url, :class => "style_image" %>
+                    <% else %>
+                   <img src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg" class="style_image">
+                   <% end %>
+                            <hr>
+                          <%  if PersonalInformation.exists?(user_id: current_user.id) %>
+                           <button class="btn btn-dark">
+                            <%= link_to "Edit", edit_personal_information_path(@personal_information.id) %>
+                           </button>
+                              <% else %>
+                              <button class="btn btn-dark">
+                                <%= link_to "New ", new_personal_information_path %>
+                              </button>
+                                  <% end %>
+                                    <div class="d-flex flex-column align-items-center text-center">
+                                      <div class="mt-3">
+                                        <% if @personal_information.present? %>
+                                           <h4> <%= @personal_information.first_name %></h4> <span><%= @personal_information.designation %></span>
+                                           <% else %>
+                                           Enter your Details
+                                        <% end %>
+                                       </div>
+                                    </div>
             </div>
-            <div class="col-md-8">
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="row">
-                  <h5 class="d-flex align-items-center mb-3">Contact Information</h5>
-
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <% @contact_informations.each do |contact_information| %>
-                     <%= contact_information.personal_email %>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0"> Officail Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <%= contact_information.email_offical %>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <%= contact_information.mobile %>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Coordinator</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                    <%= contact_information.coordinator %>
+          </div>
+          <div class="card mt-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                
+                  <h6 class="mb-0">Employee Code</h6> <span class="text-secondary"> 
+                      <% if @personal_information.present? %>
+                     <%=  @personal_information.employee_code %>
+                     <% else %>
+                       Enter your Employee Code
+                   <% end %>
+                       </span> </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Project</h6> <span class="text-secondary">
+                   <% if @personal_information.present? %>
+                   <%= @personal_information.project %>
+                  <% else %>
+                   Enter your Project
+                   <% end %>
+                 </span> </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Department</h6> <span class="text-secondary">
+                     <% if @personal_information.present? %>
+                    <%= @personal_information.department %>
+                    <% else %>
+                   Enter your Departemnt
                     <% end %>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="row">
-                  <div class="col-sm-2">
-                   </div>
-                    <div class="col-sm-10">
-                    <button class="btn btn-dark" style="width: 130px;">
-                    <% @contact_informations.each do |contact_information| %>
-
-                    <%= link_to "Edit", edit_contact_information_path(contact_information.id) %> 
+                  </span> </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                <h6 class="mb-0">Employment Type</h6> <span class="text-secondary">
+                   <% if @personal_information.present? %>
+                  <%= @personal_information.employment_type %>
+                  <% else %>
+                  Enter your Employment Type 
+                  <% end %>
+                   </span> </li>
+             </ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <!-- <div class="card-body">
+              <div class="row">
+                <h5 class="d-flex align-items-center mb-3">Contact Information</h5>
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Email</h6> </div>
+                <div class="col-sm-9 text-secondary">
+                  <% @contact_informations.each do |contact_information| %>
+                  <% if contact_information.present? %>
+                    <%= contact_information.personal_email %>
+                    <% else %>
+                  Enter your email
                     <% end %>
-                    </button>
-                    </div>
-                  </div>
                 </div>
               </div>
-              <div class="row gutters-sm">
-                <div class="col-sm-12 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <h6 class="d-flex align-items-center mb-3">Emergency Contact Details </h6>
-                      <% @emergency_contacts.each do |emergency_contact| %>
-
-                      <small>Name</small>
-                      <div class=" " >
-                      <%= emergency_contact.emergency_contact_name %>
-                       </div>
-                      <small>Relation</small>
-                      <div class=" ">
-                      <%= emergency_contact.emergency_contact_relation %>
-                       </div>
-                      <small>Contact</small>
-                      <div class="" >
-                      <%= emergency_contact.emergency_contact_mobile %>
-                       </div>
-                      <small>Residence Address</small>
-                      <div class="">
-                      <%= emergency_contact.residence_address %>
-                     </div>
-                      <small>Address</small>
-                      <div class="" >
-                      <%= emergency_contact.permanent_address %>
-                       </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0"> Officail Email</h6> </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= contact_information.email_offical %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Mobile</h6> </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= contact_information.mobile %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Coordinator</h6> </div>
+                <div class="col-sm-9 text-secondary">
+                  <%= contact_information.coordinator %>
+                    <% end %>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-2"> </div>
+                <div class="col-sm-10">
+                  <button class="btn btn-dark" style="width: 130px;">
+                    <% @contact_informations.each do |contact_information| %>
+                      <%= link_to "Edit", edit_contact_information_path(contact_information.id) %>
+                        <% end %>
+                  </button>
+                </div>
+              </div>
+            </div> -->
+          </div>
+          <div class="row gutters-sm">
+            <div class="col-sm-12 mb-3">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3">Emergency Contact Details </h6>
+                  <button class="btn btn-dark">
+                    <%= link_to 'Add New',new_emergency_contact_path %>
+                  </button>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Relation</th>
+                        <th scope="col">Contact</th>
+                        <th scope="col">Residence Address</th>
+                        <th scope="col"> Permanent Address</th>
+                        <th scope="col">user_id</th>
+                        <th scope="col">Action </th>
+                      </tr>
+                    </thead>
+                    <% @emergency_contacts.each_with_index do |emergency_contact, index | %>
+                      <tbody>
+                        <tr>
+                          <th scope="row">
+                            <%= index +1 %>
+                          </th>
+                          <td>
+                            <%= emergency_contact.emergency_contact_name %>
+                          </td>
+                          <td>
+                            <%= emergency_contact.emergency_contact_relation %>
+                          </td>
+                          <td>
+                            <%= emergency_contact.emergency_contact_mobile %>
+                          </td>
+                          <td>
+                            <%= emergency_contact.residence_address %>
+                          </td>
+                          <td>
+                            <%= emergency_contact.permanent_address %>
+                          </td>
+                          <td>
+                            <%= emergency_contact.user_id %>
+                          </td>
+                          <td>
+                            <button class="btn btn-dark">
+                              <%= link_to "Edit", edit_emergency_contact_path(emergency_contact.id) %>
+                            </button>
+                            <button class="btn btn-danger">
+                              <%= link_to "Delete", emergency_contact_path(emergency_contact.id), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                        } %>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
                       <% end %>
-                      </div>
-                      <div class="row">
-                      <div class="col-md-2">
-                      </div>
-                      <div class="col-md-10">
-                      <button class="btn btn-dark" style="margin-bottom: 28px;width: 130px;">
-                      <%= link_to 'New', new_emergency_contact_path %> 
-
-                      </button>
-                      </div>
-
-                      </div>
-                     </div>
+                  </table>
                 </div>
-                </div>
+              </div>
             </div>
-            <div class="row">
-            <div class="col-md-12">
-            <button class="btn btn-dark"><%= link_to 'Add new record',new_dependent_path %></button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn btn-dark">
+              <%= link_to 'Add new record',new_dependent_path %>
+            </button>
             <h5 class="d-flex align-items-center mb-3">Dependent</h5>
             <table class="table">
-            <thead>
-            <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Relation</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Date of Birth</th>
-            <th scope="col">Address</th>
-            <th scope="col">CNIC </th>
-            <th scope="col">Nationality </th>
-            <th scope="col">Action </th>
-            </tr>
-            </thead>
-            <% @dependents.each_with_index do |dependent, index | %>
-            <tbody>
-            <tr>
-            <th scope="row"><%= index +1 %></th>
-            <td><%= dependent.name %></td>
-            <td><%= dependent.relation %></td>
-            <td><%= dependent.phone %></td>
-            <td><%= dependent.date_of_birth %></td>
-            <td><%= dependent.address %></td>
-            <td><%= dependent.cnic %></td>
-            <td><%= dependent.nationality %></td>
-            <td><button class="btn btn-dark">
-            <%= link_to "Edit", edit_dependent_path(dependent.id) %> 
-            </button>
-            <button class="btn btn-danger">
-            <%= link_to "Delete", dependent_path(dependent.id), data: {
-            turbo_method: :delete,
-            turbo_confirm: "Are you sure?"
-            } %> 
-            </button>
-            </td>
-            </tr>
-            </tbody>
-            <% end %>
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Relation</th>
+                  <th scope="col">Phone</th>
+                  <th scope="col">Date of Birth</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">CNIC </th>
+                  <th scope="col">Nationality </th>
+                  <th scope="col">Action </th>
+                </tr>
+              </thead>
+              <% @dependents.each_with_index do |dependent, index | %>
+                <tbody>
+                  <tr>
+                    <th scope="row">
+                      <%= index +1 %>
+                    </th>
+                    <td>
+                      <%= dependent.name %>
+                    </td>
+                    <td>
+                      <%= dependent.relation %>
+                    </td>
+                    <td>
+                      <%= dependent.phone %>
+                    </td>
+                    <td>
+                      <%= dependent.date_of_birth %>
+                    </td>
+                    <td>
+                      <%= dependent.address %>
+                    </td>
+                    <td>
+                      <%= dependent.cnic %>
+                    </td>
+                    <td>
+                      <%= dependent.nationality %>
+                    </td>
+                    <td>
+                      <button class="btn btn-dark">
+                        <%= link_to "Edit", edit_dependent_path(dependent.id) %>
+                      </button>
+                      <button class="btn btn-danger">
+                        <%= link_to "Delete", dependent_path(dependent.id), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      } %>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+                <% end %>
             </table>
-            </div>
-            </div>
-         </div>
-    </div>
-    
+          </div>
+        </div>
