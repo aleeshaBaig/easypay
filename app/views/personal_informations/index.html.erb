@@ -75,8 +75,9 @@
           <div class="card">
             <div class="card-body">
                   <% if @personal_information.present? %>
-                    <%= image_tag @personal_information.image.url, :class => "style_image" %>
+                    <%= image_tag @personal_information.image.url, :class => "style_image rounded" %>
                     <% else %>
+ 
                    <img src="https://thumbs.dreamstime.com/b/default-avatar-photo-placeholder-profile-icon-eps-file-easy-to-edit-default-avatar-photo-placeholder-profile-icon-124557887.jpg" class="style_image">
                    <% end %>
                             <hr>
@@ -92,7 +93,7 @@
                                     <div class="d-flex flex-column align-items-center text-center">
                                       <div class="mt-3">
                                         <% if @personal_information.present? %>
-                                           <h4> <%= @personal_information.first_name %></h4> <span><%= @personal_information.designation %></span>
+                                           <h4 class="text-sky-500 dark:text-sky-400"> <%= @personal_information.first_name %></h4> <span><%= @personal_information.designation %></span>
                                            <% else %>
                                            Enter your Details
                                         <% end %>
@@ -209,8 +210,7 @@
                         <th scope="col">Contact</th>
                         <th scope="col">Residence Address</th>
                         <th scope="col"> Permanent Address</th>
-                        <th scope="col">user_id</th>
-                        <th scope="col">Action </th>
+                         <th scope="col">Action </th>
                       </tr>
                     </thead>
                     <% @emergency_contacts.each_with_index do |emergency_contact, index | %>
@@ -234,9 +234,7 @@
                           <td>
                             <%= emergency_contact.permanent_address %>
                           </td>
-                          <td>
-                            <%= emergency_contact.user_id %>
-                          </td>
+                          
                           <td>
                             <button class="btn btn-dark">
                               <%= link_to "Edit", edit_emergency_contact_path(emergency_contact.id) %>

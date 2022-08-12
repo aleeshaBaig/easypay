@@ -3,34 +3,34 @@
 <table class="table">
 <thead>
 <tr>
-<th scope="col">#</th>
+<th scope="col"></th>
 <th scope="col">Title</th>
 <th scope="col">Major</th>
 <th scope="col">Institute</th>
 <th scope="col">Date</th>
-<th scope="col">Action </th>
+ <th scope="col">Action </th>
 </tr>
 </thead>
-<% @educations.each_with_index do |education, index | %>
-<tbody>
-<tr>
-<th scope="row"><%= index +1 %></th>
-<td><%= education.title %></td>
-<td><%= education.major %></td>
-<td><%= education.institute %></td>
-<td><%= education.date %></td>
- 
-<td><button class="btn btn-dark">
-<%= link_to "Edit", edit_education_path(education.id) %> 
-</button>
-<button class="btn btn-danger">
-<%= link_to "Delete", education_path(education.id), data: {
-turbo_method: :delete,
-turbo_confirm: "Are you sure?"
-} %> 
-</button>
-</td>
-</tr>
-</tbody>
-<% end %>
+    <% @educations.each_with_index do |education, index | %>
+   <tbody>
+      <tr>
+      <th scope="row"><%= index +1 %></th>
+      <td><%= education.title %></td>
+      <td><%= education.major %></td>
+      <td><%= education.institute %></td>
+      <td><%= education.date %></td>
+       
+      <td><button class="btn btn-dark">
+      <%= link_to "Edit", edit_education_path(education.id) %> 
+      </button>
+      <button class="btn btn-danger">
+      <%= link_to "Delete", education_path(education.id), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      } %> 
+      </button>
+      </td>
+      </tr>
+      </tbody>
+ <% end %>
 </table>
