@@ -4,54 +4,59 @@
   <div class="form-control">
   <%= form.file_field :image %>
   </div>
-  <div class="col-sm-3">
+  <div >
     <%= form.label :first_name %><br>
-    <%= form.text_field :first_name %>
+    <%= form.text_field :first_name, class:"form-control"%>
   </div>
   <div>
   <%= form.label :last_name %><br>
-  <%= form.text_field :last_name %>
+  <%= form.text_field :last_name, class:"form-control"%>
   </div>
 <div>
 <%= form.label :date_of_birth %><br>
-<%= form.text_field :date_of_birth %>
+<%= form.text_field :date_of_birth, class:"form-control" %>
 </div>
 <div>
 <%= form.label :marital_status %><br>
-<%= form.text_field :marital_status %>
+<%= form.text_field :marital_status, class:"form-control" %>
 </div>
 <div>
 <%= form.label :religion %><br>
-<%= form.text_field :religion %>
+<%= form.text_field :religion, class:"form-control" %>
 </div>
   <div>
 <%= form.label :cnic %><br>
-<%= form.text_field :cnic %>
+<%= form.text_field :cnic, class:"form-control" %>
 </div>
 <div>
 <%= form.label :project %><br>
-<%= form.text_field :project %>
+<%= form.text_field :project, class:"form-control" %>
 </div>
 <div>
 <%= form.label :departemnt %><br>
-<%= form.text_field :department %>
+<%= form.text_field :department, class:"form-control" %>
 </div>
 <div>
 <%= form.label :employment_type %><br>
-<%= form.text_field :employment_type %>
+<%= form.text_field :employment_type, class:"form-control" %>
 </div>
 <div>
 <%= form.label :date_of_joining %><br>
-<%= form.text_field :date_of_joining %>
+<%= form.text_field :date_of_joining, class:"form-control" %>
 </div>
 <div>
 <%= form.label :employee_code %><br>
-<%= form.text_field :employee_code %>
+<%= form.text_field :employee_code, class:"form-control" %>
 </div>
 <div>
 <%= form.label :designation %><br>
-<%= form.text_field :designation %>
+<%= form.text_field :designation, class:"form-control" %>
 </div>
-    <%= form.submit %>
+<br>
+<button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800">
+<%= form.submit %>
+
+</button>
+
   </div>
 <% end %>
