@@ -83,8 +83,13 @@
                             <hr>
                           <%  if PersonalInformation.exists?(user_id: current_user.id) %>
                            <button class="btn btn-dark place-items-center">
-                           <i class=" material-icons">Edit</i>
-                            <%= link_to "Edit", edit_personal_information_path(@personal_information.id), class:"place-items-center"%>
+                           <%= link_to "Edit", edit_personal_information_path(@personal_information.id), class:"place-items-center"%>
+
+                           <button class="button button-icon button-pink" data-ripple-light="true">
+                           <i class="material-icons">edit</i>
+
+                         </button>
+
                            </button>
                               <% else %>
                               <button class="btn btn-dark">

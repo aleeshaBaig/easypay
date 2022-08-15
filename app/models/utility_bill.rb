@@ -1,5 +1,7 @@
 require 'csv'
 class UtilityBill < ApplicationRecord
+  validates :consumer_id, presence: true, uniqueness: true;
+  
   def self.to_csv
     attribute = %w{consumer_id customer_name category}
     CSV.generate(header: true) do |csv|
