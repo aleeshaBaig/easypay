@@ -16,16 +16,13 @@ before_action :authenticate_user!
     def create
     @education = Education.new(education_params)
 
-    respond_to do |format|
-       if @education.save
-          format.html { redirect_to education_url(@education), notice: "Education information was successfully created." }
-          format.json { render :show, status: :created, location: @education }
+        if @education.save
+          redirect_to educations_path
        else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @education.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity
+
       end
     end
-  end
     def destroy
     @education = Education.find(params[:id])
     @education.destroy

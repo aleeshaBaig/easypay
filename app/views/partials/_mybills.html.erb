@@ -76,4 +76,39 @@
   </div>
 
 </div>
- 
+  
+ <script> function exportDataToExcel(table-id, filename = ''){
+
+var downloadurl;
+
+var fileType = 'application/vnd.ms-excel';
+
+var tableSelect = document.getElementById(table-id);
+
+var dataHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+filename = filename?filename+'.xls':'user_details.xls';
+
+downloadurl = document.createElement("a");
+
+document.body.appendChild(downloadurl);
+
+if(navigator.msSaveOrOpenBlob){
+
+var blob = new Blob(['\ufeff', dataHTML],{
+
+type: fileType
+
+});navigator.msSaveOrOpenBlob( blob, filename);
+
+}else{
+
+downloadurl.href = 'data:' + fileType + ', ' + dataHTML;
+
+downloadurl.download = filename;
+
+downloadurl.click();
+
+}}
+
+</script>

@@ -13,7 +13,19 @@ before_action :authenticate_user!
   end
   def index
     @utility_bills = current_user.utility_bill
+    respond_to do |format|
+      format.html
+      format.csv{ send_data @utility_bills.to_csv}
+    end
   end
+  # def import 
+  #   @import = UtilityBill: :Import.new utility_bill_params
+  #   if @import.save
+  #     redirect_to root_path, notice: "Imported #{@import.imported_count} utility_bills"
+  #   else
+  #     utility_bill.assign_attributes row.to_hash.slice()
+  #   end
+  # end
 
   def show
     @utility_bill = UtilityBill.find(params[:id])

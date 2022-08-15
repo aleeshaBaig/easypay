@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       collection do
         get 'companies_details'
         get'search'
+        
       end
     end
   resources :bills do
