@@ -1,5 +1,4 @@
-
-<!-- Navbar -->
+<% if user_signed_in? %>  <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-blue">
   <!-- Container wrapper -->
   <div class="container">
@@ -65,3 +64,6 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+ <% else %>
+
+<% end %>

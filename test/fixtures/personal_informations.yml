@@ -4,7 +4,7 @@ one:
   image: MyString
   first_name: MyString
   last_name: MyString
-  date_of_birth: 2022-08-05
+  date_of_birth: 2022-08-15
   marital_status: 1
   religion: 1
   cnic: MyString
@@ -13,14 +13,14 @@ one:
   employment_type: 1
   employee_code: 1
   designation: MyString
-  date_of_joining: 2022-08-05
+  date_of_joining: 2022-08-15
   user: one
 
 two:
   image: MyString
   first_name: MyString
   last_name: MyString
-  date_of_birth: 2022-08-05
+  date_of_birth: 2022-08-15
   marital_status: 1
   religion: 1
   cnic: MyString
@@ -29,5 +29,5 @@ two:
   employment_type: 1
   employee_code: 1
   designation: MyString
-  date_of_joining: 2022-08-05
+  date_of_joining: 2022-08-15
   user: two

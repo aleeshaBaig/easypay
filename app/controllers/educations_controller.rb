@@ -16,9 +16,10 @@ before_action :authenticate_user!
     def create
     @education = Education.new(education_params)
 
-        if @education.save
-          redirect_to educations_path
+        if @education.save!
+          redirect_to educations_path, notice: "Successfully created education"
        else
+         flash[:alert] = "Something was wrong"
         render :new, status: :unprocessable_entity
 
       end

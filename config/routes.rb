@@ -3,7 +3,13 @@ Rails.application.routes.draw do
   resources :emergency_contacts
   resources :dependents
   resources :educations
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords:    'users/passwords'
+  }
+  
+
   resources :personal_informations
   resources :utility_bills do
       collection do

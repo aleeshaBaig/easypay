@@ -1,32 +1,44 @@
 <div id="<%= @contact_information %>">
-  <p>
-    <strong>Mobile:</strong>
-    <%= contact_information.mobile %>
-  </p>
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+</div>
+<div class="col-md-8">
+  <div class="w-full max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex justify-end px-4 pt-4">
+        
+        
+    </div>
+    <div class="flex flex-col items-center pb-10">
+         <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><strong>Mobile:</strong>
+         <%= contact_information.mobile %></h5>
+        <span class="text-sm text-gray-500 dark:text-gray-400"> <strong>Residence phone:</strong>
+        <%= contact_information.residence_phone %></span>
+        <span class="text-sm text-gray-500 dark:text-gray-400"><strong>Coordinator:</strong>
+        <%= contact_information.coordinator %></span>
+        <span class="text-sm text-gray-500 dark:text-gray-400"><strong>Personal email:</strong>
+        <%= contact_information.personal_email %></span>
+        <span class="text-sm text-gray-500 dark:text-gray-400"> <strong>Email offical:</strong>
+        <%= contact_information.email_offical %></span>
+         
+        <div class="flex mt-4 space-x-3 md:mt-6">
+        <button class="btn btn-secondary text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+      <%= link_to "Show", contact_information %>
+      
+      </button>
+      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><%= link_to "New", new_contact_information_path %>
 
-  <p>
-    <strong>Residence phone:</strong>
-    <%= contact_information.residence_phone %>
-  </p>
+</button>
+         </div>
+    </div>
+</div>
+</div>
+<div class="col-md-2">
+</div>
+</div>
+</div>
+  
 
-  <p>
-    <strong>Coordinator:</strong>
-    <%= contact_information.coordinator %>
-  </p>
-
-  <p>
-    <strong>Office phone string:</strong>
-    <%= contact_information.office_phone %>
-  </p>
-
-  <p>
-    <strong>Personal email:</strong>
-    <%= contact_information.personal_email %>
-  </p>
-
-  <p>
-    <strong>Email offical:</strong>
-    <%= contact_information.email_offical %>
-  </p>
 
 </div>
+

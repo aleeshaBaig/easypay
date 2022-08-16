@@ -8,6 +8,7 @@ gem 'carrierwave', '~> 2.0'
 gem 'image_processing'
 gem 'mini_magick'
 gem 'active_storage_validations'
+gem 'client_side_validations'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
