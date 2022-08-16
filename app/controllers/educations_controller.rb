@@ -18,11 +18,11 @@ before_action :authenticate_user!
 
         if @education.save!
           redirect_to educations_path, notice: "Successfully created education"
-       else
-         flash[:alert] = "Something was wrong"
+        else
+          flash[:alert] = "Something was wrong"
         render :new, status: :unprocessable_entity
 
-      end
+        end
     end
     def destroy
     @education = Education.find(params[:id])
