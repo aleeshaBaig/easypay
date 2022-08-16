@@ -39,7 +39,7 @@ before_action :authenticate_user!
     @education= Education.find(params[:id])
 
     if   @education.update(education_params)
-    redirect_to   personal_information_path 
+      redirect_to educations_path 
     else
     render :edit, status: :unprocessable_entity
     end
