@@ -5,4 +5,5 @@ class ContactInformation < ApplicationRecord
   validates :personal_email, presence: true
   validates :email_offical, presence: true
 
+  belongs_to :user
 end

@@ -1,3 +1,8 @@
+<style>
+.w-full {
+  width: '165% !important';
+}
+</style>
 <div id="<%= @contact_information %>">
 <div class="container">
 <div class="row">
@@ -10,6 +15,7 @@
         
     </div>
     <div class="flex flex-col items-center pb-10">
+    
          <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white"><strong>Mobile:</strong>
          <%= contact_information.mobile %></h5>
         <span class="text-sm text-gray-500 dark:text-gray-400"> <strong>Residence phone:</strong>
@@ -26,9 +32,15 @@
       <%= link_to "Show", contact_information %>
       
       </button>
-      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><%= link_to "New", new_contact_information_path %>
-
-</button>
+      <%  if ContactInformation.exists?(user_id: current_user.id) %>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+         <%= link_to "Edit", edit_contact_information_path(@contact_information.id) %>
+        </button>
+        <% else %>
+      <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+      <%= link_to "New", new_contact_information_path %>
+      </button>
+      <% end %>
          </div>
     </div>
 </div>

@@ -27,7 +27,7 @@ before_action :authenticate_user!
     def  update
       @emergency_contact  = EmergencyContact.find(params[:id])
       if  @emergency_contact.update(emergency_contact_params)
-        redirect_to personal_informations_path
+        redirect_to  @emergency_contact 
       else
         render :edit, status: :unprocessable_entity
   

@@ -39,32 +39,40 @@ before_action :authenticate_user!
 
   def create
     @utility_bill = UtilityBill.new(utility_bill_params)
-     
-
-    if @utility_bill.save
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+      respond_to do |format|
+       if @utility_bill.save
+        format.html { redirect_to root_path(@utility_bill, notice: "Utility Added")}
+        format.json { render :show, status: :created, location: @utility_bill}
+       else
+        format.html {render :new, status: :unprocessable_entity }
+        format.json { render json: @utility_bill.errors, status: :unprocessable_entity}
+       end
+      end
   end
   def edit
     @utility_bill = UtilityBill.find(params[:id])
   end
   def update
-    @utility_bill = UtilityBill.find(params[:id])
+    @utility_bill = UtilityBill.find(params[:id])     
+    respond_to do |format|
 
     if @utility_bill.update(utility_bill_params)
-      redirect_to root_path
-    else
-      render :edit, status: :unprocessable_entity
+      format.html { redirect_to root_path(@utility_bill), notice: "Utility Bill is Updated"}
+      format.json {render :show, status: :ok, location: @utility_bill}
+     else
+      format.html { render :edit, status: :unprocessable_entity}
+      format.json { render json: @utility_bill.errors, status: :unprocessable_entity}
+     end
     end
   end
  
   def destroy
     @utility_bill = UtilityBill.find(params[:id])
     @utility_bill.destroy
-
-    redirect_to root_path, status: :see_other
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: "Deleted"  }
+      format.json { head :no_content}
+    end
   end
   private
     def utility_bill_params

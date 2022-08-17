@@ -14,36 +14,48 @@ before_action :authenticate_user!
     end
 
     def create
-    @education = Education.new(education_params)
-
-        if @education.save!
-          redirect_to educations_path, notice: "Successfully created education"
+      @education = Education.new(education_params)
+  
+      respond_to do |format|
+        if @education.save
+          format.html { redirect_to educations_url(@education), notice: "Education was successfully created." }
+          format.json { render :show, status: :created, location: @education }
         else
-          flash[:alert] = "Something was wrong"
-        render :new, status: :unprocessable_entity
-
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @education.errors, status: :unprocessable_entity }
         end
+      end
     end
-    def destroy
+    # DELETE /educations/1 or /educations/1.json
+  def destroy
     @education = Education.find(params[:id])
     @education.destroy
 
-    redirect_to education_path, status: :see_other
+    respond_to do |format|
+      format.html { redirect_to educations_url, notice: "Education was successfully destroyed." }
+      format.json { head :no_content }
     end
+  end
+
 
     def edit
     @education= Education.find(params[:id])
     end
 
-    def update
-    @education= Education.find(params[:id])
+      # PATCH/PUT /educations/1 or /educations/1.json
+  def update
+    @education = Education.find(params[:id])
 
-    if   @education.update(education_params)
-      redirect_to educations_path 
-    else
-    render :edit, status: :unprocessable_entity
+    respond_to do |format|
+      if @education.update(education_params)
+        format.html { redirect_to educations_url(@education), notice: "Education was successfully updated." }
+        format.json { render :show, status: :ok, location: @education }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @education.errors, status: :unprocessable_entity }
+      end
     end
-    end
+  end
 
     private
     def  education_params

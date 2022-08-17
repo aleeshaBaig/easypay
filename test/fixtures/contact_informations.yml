@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  mobile: MyString
-  residence_phone: MyString
+  mobile: 1
+  residence_phone: 1
   coordinator: MyString
-  office_phone_string: MyString
   personal_email: MyString
   email_offical: MyString
+  user: one
 
 two:
-  mobile: MyString
-  residence_phone: MyString
+  mobile: 1
+  residence_phone: 1
   coordinator: MyString
-  office_phone_string: MyString
   personal_email: MyString
   email_offical: MyString
+  user: two

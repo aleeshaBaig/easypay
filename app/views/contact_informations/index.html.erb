@@ -1,16 +1,10 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Contact information</h1>
-
-<div id="contact_informations">
-  <% @contact_informations.each do |contact_information| %>
-    <%= render contact_information %>
-    <p>
-    
-    </p>
-
-  <% end %>
-</div>
-
+<% if ContactInformation.present? %>
+   <%= render @contact_information %>
+<% else %>
+Add your information first 
+<% end %>
 
  

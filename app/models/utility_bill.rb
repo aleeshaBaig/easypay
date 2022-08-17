@@ -1,5 +1,14 @@
 class UtilityBill < ApplicationRecord
-  validates :consumer_id, presence: true, uniqueness: true;
+  validates :consumer_id, presence: true
+  validates :customer_id, presence: true
+  validates :customer_name, presence: true
+  validates :utility_bill_category_id, presence: true
+  validates :company_id, presence: true
+  validates :expected_due_day, presence: true
+  validates :expected_issuance_day, presence: true
+  validates :expected_reading_day, presence: true
+  validates :focal_person, presence: true
+  validates :nickname, presence: true
   has_many :bills
   belongs_to :user
   belongs_to :utility_bill_category

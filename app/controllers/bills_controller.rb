@@ -26,11 +26,15 @@ before_action :get_bill, only: [:show, :pay]
   end
   def create
     @bill= Bill.new(bill_params)
-    if @bill.save
-      redirect_to root_path
-    else
-      render :new, status: :unprocessable_entity
-    end
+    respond_to do |format|
+      if @bill.save
+       format.html { redirect_to root_path(@bill), notice: "Bill Added"}
+       format.json { render :show, status: :created, location: @bill}
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @bill.errors, status: :unprocessable_entity }
+      end
+  end
   end
   def edit
     @bill= Bill.find(params[:id])

@@ -3,11 +3,13 @@ class ContactInformationsController < ApplicationController
 
   # GET /contact_informations or /contact_informations.json
   def index
-    @contact_informations = ContactInformation.all
+    @contact_information = ContactInformation.where(user_id: current_user.id).last
   end
 
   # GET /contact_informations/1 or /contact_informations/1.json
   def show
+    @contact_information = ContactInformation.find(params[:id])
+    
   end
 
   # GET /contact_informations/new
@@ -65,6 +67,6 @@ class ContactInformationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def contact_information_params
-      params.require(:contact_information).permit(:mobile, :residence_phone, :coordinator,  :personal_email, :email_offical, :user_id)
+      params.require(:contact_information).permit(:mobile, :residence_phone, :coordinator,  :personal_email, :email_offical, :user_id, :office_phone)
     end
 end

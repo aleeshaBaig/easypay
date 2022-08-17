@@ -1,9 +1,12 @@
-  <%= form_with model:@education do |form| %>
+<p style="color: green"><%= notice %></p>
+
+<%= form_with model:@education do |form| %>
+   
   <div>
    <%= form.label :title, style: "display: block" %>
    <%= form.text_field :title, class:"form-control" %>
    <% @education.errors.full_messages_for(:title).each do |message| %>
-   <div><%= message %></div>
+   <div style="color: red"><%= message %></div>
     <% end %>
   </div>
 
@@ -11,7 +14,7 @@
     <%= form.label :major, style: "display: block" %>
     <%= form.text_field :major, class:"form-control"  %>
     <% @education.errors.full_messages_for(:major).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
        <% end %>
   </div>
 
@@ -19,7 +22,7 @@
     <%= form.label :institute, style: "display: block" %>
     <%= form.text_field :institute, class:"form-control"  %>
     <% @education.errors.full_messages_for(:institute).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
        <% end %>
   </div>
 
@@ -27,7 +30,7 @@
     <%= form.label :date, style: "display: block" %>
     <%= form.text_field :date, class:"form-control"  %>
     <% @education.errors.full_messages_for(:date).each do |message| %>
-      <div><%= message %></div>
+      <div style="color: red"><%= message %></div>
        <% end %>
   </div>
   <br>

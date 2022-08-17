@@ -4,41 +4,80 @@
 		<div class="col-md-6">
 			<%= form.label :amount %>
 			<%= form.text_field :amount,class:"form-control"%>
+			<% @bill.errors.full_messages_for(:amount).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 
 		</div>
 		<div class="col-md-6">
 			<%= form.label :late_fee %>
-			<%= form.text_field :late_fee,class:"form-control"%></div>
+			<%= form.text_field :late_fee,class:"form-control"%>
+			<% @bill.errors.full_messages_for(:late_fee).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 
+			</div>
 			<div class="col-md-6">
 				<%= form.label :billing_month %>
 				<%= form.text_field :billing_month,class:"form-control"%>
+				<% @bill.errors.full_messages_for(:billing_month).each do |message| %>
+					<div style="color: red"><%= message%></div>
+					<% end %>
+			 
 			</div>
 			<div class="col-md-6">
 				<%= form.label :reading_date %>
 				<%= form.date_field  :reading_date, class:"form-control"%>
-			</div>
+				<% @bill.errors.full_messages_for(:reading_date).each do |message| %>
+					<div style="color: red"><%= message%></div>
+					<% end %>
+			 
+				</div>
 			<div class="col-md-6">
 				<%= form.label :issuance_date %>
 				<%= form.date_field :issuance_date, class:"form-control" %>
+				<% @bill.errors.full_messages_for(:issuance_date).each do |message| %>
+					<div style="color: red"><%= message%></div>
+					<% end %>
+			 
 			</div>
 			<div class="col-md-6">
 			<%= form.label :due_date %>
 			<%= form.date_field :due_date,class:"form-control" %>
+			<% @bill.errors.full_messages_for(:due_date).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 
 			</div>
 			<div class="col-md-6">
        <%= form.select :status, options_for_select(Bill.statuses.keys), class:"form-control" %>
-      </div>
+       <% @bill.errors.full_messages_for(:status).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 
+			 </div>
       <div class="col-md-6">
  	      <%= form.hidden_field :user_id, value:current_user.id %>
       </div>
       <div class="col-md-6">
         <%= form.label :utility_bill_id %>
       <%= form.collection_select :utility_bill_id, UtilityBill.all, :id, :nickname, {prompt: true}, class:"form-control" %>
-      </div>
+			<% @bill.errors.full_messages_for(:utility_bill_id).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 
+			</div>
             <br>
       <div class="form-group">
-	    <%= form.submit class:"btn btn-primary" %>
-			</div> 
+			<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">	<%= form.submit %>
+
+			</button>			</div> 
       <% end %>
 	</div>
 </div>
-<%= link_to'Back to home', root_path %>
+<div class="inline-flex">
+  <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l">
+	<%= link_to'Back to home', root_path %>
+  </button>
+  
+</div>
