@@ -98,6 +98,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_110204) do
     t.index ["user_id"], name: "index_emergency_contacts_on_user_id"
   end
 
+  create_table "personal_informations", force: :cascade do |t|
+    t.string "image"
+    t.string "first_name"
+    t.string "last_name"
+    t.date "date_of_birth"
+    t.integer "marital_status"
+    t.integer "religion"
+    t.string "cnic"
+    t.string "project"
+    t.string "department"
+    t.integer "employment_type"
+    t.integer "employee_code"
+    t.string "designation"
+    t.date "date_of_joining"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_personal_informations_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -146,6 +166,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_110204) do
   add_foreign_key "dependents", "users"
   add_foreign_key "educations", "users"
   add_foreign_key "emergency_contacts", "users"
+  add_foreign_key "personal_informations", "users"
   add_foreign_key "utility_bills", "companies"
   add_foreign_key "utility_bills", "users"
   add_foreign_key "utility_bills", "utility_bill_categories"
