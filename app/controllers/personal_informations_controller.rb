@@ -23,7 +23,7 @@ class PersonalInformationsController < ApplicationController
        
   
       if @personal_information.save
-        redirect_to @personal_information 
+        redirect_to personal_informations_path
       else
         render :new, status: :unprocessable_entity
       end
@@ -37,7 +37,7 @@ class PersonalInformationsController < ApplicationController
       @personal_information = PersonalInformation.find(params[:id])
   
       if   @personal_information.update(personal_information_params)
-        redirect_to   @personal_information 
+        redirect_to   personal_informations_path
       else
         render :edit, status: :unprocessable_entity
       end
