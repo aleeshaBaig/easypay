@@ -7,26 +7,41 @@
   <div  class="col-sm-3">
     <%= form.label :emergency_contact_name, style: "display: block" %>
     <%= form.text_field :emergency_contact_name ,class:"form-control"%>
+    <% @emergency_contact.errors.full_messages_for(:emergency_contact_name).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
 
   <div  class="col-sm-3">
     <%= form.label :emergency_contact_relation, style: "display: block" %>
     <%= form.text_field :emergency_contact_relation,class:"form-control" %>
+    <% @emergency_contact.errors.full_messages_for(:emergency_contact_relation).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
 
   <div  class="col-sm-3">
     <%= form.label :emergency_contact_mobile, style: "display: block" %>
     <%= form.text_field :emergency_contact_mobile ,class:"form-control"%>
+    <% @emergency_contact.errors.full_messages_for(:emergency_contact_mobile).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
 
   <div  class="col-sm-3">
     <%= form.label :residence_address, style: "display: block" %>
     <%= form.text_field :residence_address ,class:"form-control"%>
+    <% @emergency_contact.errors.full_messages_for(:residence_address).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
 
   <div  class="col-sm-3">
     <%= form.label :permanent_address, style: "display: block" %>
     <%= form.text_field :permanent_address ,class:"form-control" %>
+    <% @emergency_contact.errors.full_messages_for(:permanent_address).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
  
   <div  class="form-group">

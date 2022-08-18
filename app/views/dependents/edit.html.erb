@@ -1,38 +1,65 @@
- 
+  
 <%= form_with model: @dependent do |form| %>
    
   <div class="col-sm-3">
     <%= form.label :name %><br>
-    <%= form.text_field :name %>
+    <%= form.text_field :name,class:"form-control" %>
+    <% @dependent.errors.full_messages_for(:name).each do |message| %>
+      <div style="color: red"><%= message %></div>
+       <% end %>
   </div>
-  <div>
+  <div  class="col-sm-3">
   <%= form.label :relation %><br>
-  <%= form.text_field :relation %>
+  <%= form.text_field :relation ,class:"form-control"%>
+  <% @dependent.errors.full_messages_for(:relation).each do |message| %>
+    <div style="color: red"><%= message %></div>
+     <% end %>
   </div>
-<div>
+<div  class="col-sm-3">
 <%= form.label :phone %><br>
-<%= form.text_field :phone %>
+<%= form.text_field :phone ,class:"form-control"%>
+<% @dependent.errors.full_messages_for(:phone).each do |message| %>
+  <div style="color: red"><%= message %></div>
+   <% end %>
 </div>
-<div>
+<div  class="col-sm-3">
 <%= form.label :date_of_birth %><br>
-<%= form.text_field :date_of_birth %>
+<%= form.text_field :date_of_birth ,class:"form-control"%>
+<% @dependent.errors.full_messages_for(:date_of_birth).each do |message| %>
+  <div style="color: red"><%= message %></div>
+   <% end %>
 </div>
-<div>
+<div  class="col-sm-3">
 <%= form.label :address %><br>
-<%= form.text_field :address %>
+<%= form.text_field :address,class:"form-control" %>
+<% @dependent.errors.full_messages_for(:address).each do |message| %>
+  <div style="color: red"><%= message %></div>
+   <% end %>
 </div>
-  <div>
+  <div  class="col-sm-3">
 <%= form.label :cnic %><br>
-<%= form.text_field :cnic %>
+<%= form.text_field :cnic ,class:"form-control"%>
+<% @dependent.errors.full_messages_for(:cnic).each do |message| %>
+  <div style="color: red"><%= message %></div>
+   <% end %>
 </div>
-<div>
+<div  class="col-sm-3">
 <%= form.label :nationality %><br>
-<%= form.text_field :nationality %>
+<%= form.text_field :nationality ,class:"form-control"%>
+<% @dependent.errors.full_messages_for(:nationality).each do |message| %>
+  <div style="color: red"><%= message %></div>
+   <% end %>
 </div>
 <div>
 <div  class="form-group">
 <%=form.hidden_field :user_id,  value:current_user.id %>
 </div> <br>
- <%= form.submit value:"Save" %>
+<button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">
+
+<%= form.submit value:"Save" %>
+
+
+</button>
+
   </div>
 <% end %>
