@@ -20,14 +20,18 @@ class PersonalInformationsController < ApplicationController
   
     def create
       @personal_information  = PersonalInformation.new(personal_information_params)
-       
-  
+       respond_to do |format|
       if @personal_information.save
+        format.html { redirect_to personal_informations_url(@personal_information), notice: "personal_information was successfully created." }
+        format.json { render :show, status: :created, location: @personal_information }
         redirect_to personal_informations_path
       else
-        render :new, status: :unprocessable_entity
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @personal_information.errors, status: :unprocessable_entity }   
       end
     end
+  end
+ 
   
     def edit
       @personal_information = PersonalInformation.find(params[:id])
@@ -35,13 +39,18 @@ class PersonalInformationsController < ApplicationController
   
     def update
       @personal_information = PersonalInformation.find(params[:id])
-  
-      if   @personal_information.update(personal_information_params)
-        redirect_to   personal_informations_path
-      else
-        render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        if   @personal_information.update(personal_information_params)
+          format.html { redirect_to personal_informations_url(@personal_information), notice: "personal_information was successfully updated." }
+          format.json { render :show, status: :ok, location: @personal_information }  
+            else
+              format.html { render :edit, status: :unprocessable_entity }
+              format.json { render json: @personal_information.errors, status: :unprocessable_entity }   
       end
     end
+  end
+
+
   
     private
       def  personal_information_params

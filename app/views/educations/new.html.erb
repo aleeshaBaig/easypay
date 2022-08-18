@@ -28,7 +28,7 @@
 
   <div>
     <%= form.label :date, style: "display: block" %>
-    <%= form.text_field :date, class:"form-control"  %>
+    <%= form.date_field :date, class:"form-control"  %>
     <% @education.errors.full_messages_for(:date).each do |message| %>
       <div style="color: red"><%= message %></div>
        <% end %>

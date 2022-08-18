@@ -14,5 +14,8 @@ class PersonalInformation < ApplicationRecord
  validates :employee_code, presence: true
  validates :designation, presence: true
  validates :date_of_joining, presence: true
+ validates :image, presence: true
+ validates :first_name, presence: true
+ validates :last_name, presence: true
   belongs_to :user
 end
