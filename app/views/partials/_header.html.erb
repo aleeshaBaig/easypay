@@ -1,11 +1,19 @@
+<style>
+.navbar-expand-lg {
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  background-color: greenyellow;
+  height: 95px;
+}
+</style>
 <% if user_signed_in? %>  <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-blue">
+<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color:"bgreenyellow !important;">
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
     <a class="navbar-brand me-2" href="/">
       <img
-        src="https://www.easypay.pt/wp-content/uploads/2021/08/easypay-1.svg"
+        src="https://www.easypayfinance.com/wp-content/uploads/2018/06/ep-one-tone-uo.png"
          alt="Easypay Logo"
         loading="lazy"
         style="margin-top: -1px; height:27px !important;"
@@ -54,10 +62,10 @@
       <div class=" align-items-center">
       <% if user_signed_in? %>
         <%= current_user.email %>
-        <%= link_to'Sign Out', destroy_user_session_path, class:"btn btn-primary", data: { turbo_method: :delete} %>
+        <%= link_to'Sign Out', destroy_user_session_path, class:"btn", data: { turbo_method: :delete}, style:"background-color:#1ac668;" %>
         <% else %>
         <%= link_to'Sign In', new_user_session_path, class:"dropdown-item" %> 
-        <button type="button" class="btn btn-primary me-3">
+        <button type="button" class="btn btn-primary me-3" >
           Sign up for free
         </button>
         <% end %>
