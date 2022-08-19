@@ -59,7 +59,7 @@
       <td><%= utility_bill.expected_issuance_day %></td>
       <td><%= utility_bill.expected_due_day %></td>
       <td><%= utility_bill.focal_person %></td>
-      <td><%= button_to raw("<i class=\"material-icons\">edit</i>"), edit_utility_bill_path(utility_bill.id) %> 
+      <td><%= link_to raw("<i class=\"material-icons\">edit</i>"), edit_utility_bill_path(utility_bill.id) %> 
       <%= link_to raw("<i class=\"material-icons\">delete</i>"), utility_bill_path(utility_bill.id), data: {
         turbo_method: :delete,turbo_confirm: "Are you sure?"} %> 
        </td>  

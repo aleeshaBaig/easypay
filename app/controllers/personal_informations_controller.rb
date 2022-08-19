@@ -24,8 +24,7 @@ class PersonalInformationsController < ApplicationController
       if @personal_information.save
         format.html { redirect_to personal_informations_url(@personal_information), notice: "personal_information was successfully created." }
         format.json { render :show, status: :created, location: @personal_information }
-        redirect_to personal_informations_path
-      else
+       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @personal_information.errors, status: :unprocessable_entity }   
       end
