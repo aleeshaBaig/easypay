@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_18_081530) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_22_070928) do
   create_table "additional_informations", force: :cascade do |t|
     t.string "place_of_birth"
     t.string "domicile"
@@ -64,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_18_081530) do
     t.string "relation"
     t.string "phone"
     t.string "mobile"
-    t.string "date_of_birth"
+    t.date "date_of_birth"
     t.string "contact_number"
     t.string "address"
     t.string "cnic"
