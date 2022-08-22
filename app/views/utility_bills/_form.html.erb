@@ -1,6 +1,7 @@
  <br>
+ <div class="container">
  <%= form_with model:@utility_bill do |form| %>
-<div class="row">
+<div class="row g-5">
    <div class="col">
       <div class="form-group">
          <%= form.label :consumerId %>
@@ -38,7 +39,10 @@
             <% end %>
          </div>
       </div>
-      <div class="col">
+     
+   </div>
+<div class="row">
+ <div class="col">
          <div  class="form-group">
             <%= form.label :nickname %>
             <%= form.text_field :nickname,class:"form-control" %>
@@ -47,11 +51,12 @@
             <% end %>
          </div>
       </div>
-   </div>
+</div>
+
    <div class="row">
       <div class="col">
          <div data-controller="category">
-            <div class="mb-3">
+            <div class="form-group">
                <%= form.label :Category %>
                <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, {prompt: true}, class:"form-control", "data-action" => "category#changeCategory"%>
                <% @utility_bill.errors.full_messages_for(:utility_bill_category_id).each do |message| %>
@@ -112,4 +117,5 @@
       </div>
    </div>
    <% end %>
- <%= link_to'Back to home', root_path %>
+   </div>
+ 

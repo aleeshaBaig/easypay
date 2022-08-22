@@ -27,12 +27,12 @@
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
                 <div class="field">
                   <%= f.label :email, class:"labels"%><br>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control"%>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control", required: true %>
                 </div>
               
                 <div class="field">
                   <%= f.label :password, class:"labels" %><br />
-                  <%= f.password_field :password, autocomplete: "current-password", class:"form-control " %>
+                  <%= f.password_field :password, autocomplete: "current-password", class:"form-control ", required: true  %>
                 </div>
               
                 
@@ -59,7 +59,7 @@
               </div>
               
           </div>
-          <p class="text-sm font-light text-gray-500 dark:text-gray-400" style="text-align: center;">
+          <p class="text-sm font-light text-gray-500 dark:text-gray-400" style="margin-left: 12px;">
           <br>
               Don’t have an account yet ? <%= link_to "Sign up", new_registration_path(resource_name), class:"signuplink"%>
               <% end %>

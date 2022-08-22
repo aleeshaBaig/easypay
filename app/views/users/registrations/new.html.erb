@@ -31,7 +31,7 @@ h-8 {
         
           <div class="field">
             <%= f.label :email, class:"labels" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"block border border-grey-light w-full p-3 rounded mb-4"%>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" , required: true %>
           </div>
         
           <div class="field">
@@ -39,14 +39,14 @@ h-8 {
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password",class:"block border border-grey-light w-full p-3 rounded mb-4" %>
+            <%= f.password_field :password, autocomplete: "new-password", class:"form-control", required: true %>
           </div>
         
           <div class="field">
             <%= f.label :password_confirmation, class:"labels" %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"block border border-grey-light w-full p-3 rounded mb-4"%>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",   class:"form-control" , required: true %>
           </div>
-        
+           <br>
           <div class="actions">
            
           </div>
@@ -55,9 +55,9 @@ h-8 {
         
         <%= f.submit "Sign up", style:"width:416px;",class:"text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
          <% end %>
-        <div class="text-center text-sm text-grey-dark mt-4">
+        <div class="text-sm text-grey-dark mt-4">
         Already have an account ? 
-        <%= link_to "Log in", new_session_path(resource_name), class:"loginlink" %><br />
+        <%= link_to "Login", new_session_path(resource_name), class:"loginlink" %><br />
             
           
         </div>
