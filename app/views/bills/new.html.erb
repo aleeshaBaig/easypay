@@ -1,78 +1,89 @@
 <div class="container">
 	<div class="row">
 		<%= form_with model:@bill do |form| %>
-		<div class="col-md-6">
-			<%= form.label :amount %>
+
+
+			<div class="row">
+      <div class="col">
+				<%= form.label :amount %>
 			<%= form.text_field :amount,class:"form-control"%>
 			<% @bill.errors.full_messages_for(:amount).each do |message| %>
 				<div style="color: red"><%= message%></div>
 				<% end %>
-		 
-		</div>
-		<div class="col-md-6">
+			</div>
+			<div class="col">
 			<%= form.label :late_fee %>
 			<%= form.text_field :late_fee,class:"form-control"%>
 			<% @bill.errors.full_messages_for(:late_fee).each do |message| %>
 				<div style="color: red"><%= message%></div>
 				<% end %>
-		 
 			</div>
-			<div class="col-md-6">
-				<%= form.label :billing_month %>
+			<div class="col">
+					<%= form.label :billing_month %>
 				<%= form.text_field :billing_month,class:"form-control"%>
 				<% @bill.errors.full_messages_for(:billing_month).each do |message| %>
 					<div style="color: red"><%= message%></div>
 					<% end %>
-			 
 			</div>
-			<div class="col-md-6">
-				<%= form.label :reading_date %>
+			</div>
+		 
+		 <div class= "row">
+		 <div class="col">
+		 	<%= form.label :reading_date %>
 				<%= form.date_field  :reading_date, class:"form-control"%>
 				<% @bill.errors.full_messages_for(:reading_date).each do |message| %>
 					<div style="color: red"><%= message%></div>
 					<% end %>
-			 
-				</div>
-			<div class="col-md-6">
+		 </div>
+		  <div class="col">
 				<%= form.label :issuance_date %>
 				<%= form.date_field :issuance_date, class:"form-control" %>
 				<% @bill.errors.full_messages_for(:issuance_date).each do |message| %>
 					<div style="color: red"><%= message%></div>
 					<% end %>
-			 
-			</div>
-			<div class="col-md-6">
+		 </div>
+		  <div class="col">
 			<%= form.label :due_date %>
 			<%= form.date_field :due_date,class:"form-control" %>
 			<% @bill.errors.full_messages_for(:due_date).each do |message| %>
 				<div style="color: red"><%= message%></div>
 				<% end %>
-		 
-			</div>
-			<div class="col-md-6">
-       <%= form.select :status, options_for_select(Bill.statuses.keys), class:"form-control" %>
-       <% @bill.errors.full_messages_for(:status).each do |message| %>
-				<div style="color: red"><%= message%></div>
-				<% end %>
-		 
-			 </div>
-      <div class="col-md-6">
- 	      <%= form.hidden_field :user_id, value:current_user.id %>
-      </div>
-      <div class="col-md-6">
-        <%= form.label :utility_bill_id %>
+		 </div>
+		 </div>
+		 <div class="row">
+		 <div class="col">
+		  <%= form.label :utility_bill_id %>
       <%= form.collection_select :utility_bill_id, UtilityBill.all, :id, :nickname, {prompt: true}, class:"form-control" %>
 			<% @bill.errors.full_messages_for(:utility_bill_id).each do |message| %>
 				<div style="color: red"><%= message%></div>
 				<% end %>
+		 </div>
+		 <div class="col">
+		    <%= form.select :status, options_for_select(Bill.statuses.keys), class:"form-select" %>
+         <% @bill.errors.full_messages_for(:status).each do |message| %>
+				<div style="color: red"><%= message%></div>
+				<% end %>
+		 </div>
+		 </div>
+ 
+      <div class="col-md-6">
+ 	      <%= form.hidden_field :user_id, value:current_user.id %>
+      </div>
+      <div class="col-md-6">
+       
 		 
 			</div>
             <br>
-      <div class="form-group">
-			<button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">	<%= form.submit %>
-
-			</button>			</div> 
-      <% end %>
+      <div class="row">
+      <div class="col-md-5">
+      </div>
+      <div class="col-md-7">
+         <button type="button" class=" text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">	<%= form.submit %>
+         </button>
+      </div>
+   </div>
+   <% end %>
+</div>
 	</div>
 </div>
 <div class="inline-flex">

@@ -7,7 +7,7 @@ validates :due_date, presence: true
 validates :issuance_date, presence: true
 validates :reading_date, presence: true
 
-enum status: [:paid, :unpaid, :pending]
+enum status: [:Paid, :Unpaid, :Pending]
 
   belongs_to :user
   belongs_to :utility_bill
