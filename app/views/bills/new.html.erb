@@ -1,3 +1,4 @@
+<br>
 <div class="container">
 	<div class="row">
 		<%= form_with model:@bill do |form| %>
@@ -58,8 +59,10 @@
 				<div style="color: red"><%= message%></div>
 				<% end %>
 		 </div>
-		 <div class="col">
-		    <%= form.select :status, options_for_select(Bill.statuses.keys), class:"form-select" %>
+		 <div class="col block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400 ">
+		 <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Select Status</label>
+
+		    <%= form.select :status, options_for_select(Bill.statuses.keys), class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
          <% @bill.errors.full_messages_for(:status).each do |message| %>
 				<div style="color: red"><%= message%></div>
 				<% end %>

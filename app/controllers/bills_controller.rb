@@ -9,9 +9,9 @@ before_action :get_bill, only: [:show, :pay]
      @bill = Bill.find(params[:id])
     end
   def pay
-    if (@bill.status == "unpaid") || (@bill.status == "pending")
+    if (@bill.status == "Unpaid") || (@bill.status == "Pending")
       respond_to do |format|
-        if @bill.update(status: "paid") 
+        if @bill.update(status: "Paid") 
          #format.turbo_stream { render turbo_stream: ..., layout: ... }
         end
       end
