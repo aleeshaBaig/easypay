@@ -82,10 +82,10 @@ box-shadow: none!important;
          </div>
          <div class="col-md-4">
             <%  if PersonalInformation.exists?(user_id: current_user.id) %>
-             <%= button_to "Edit", edit_personal_information_path(@personal_information.id),  class:"text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get%>
+             <%= button_to "Edit", edit_personal_information_path(@personal_information.id),  class:"text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get, style:"    margin-left: 19px;"%>
             
              <% else %>
-             <%= link_to "New ", new_personal_information_path, class:"text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get%>
+             <%= link_to "New ", new_personal_information_path, class:"text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get,  style:"margin-left: 19px;"%>
              <% end %>
          </div>
          <div class="col-md-4">
@@ -150,21 +150,26 @@ box-shadow: none!important;
 </div>
 </div>
 <div class="col-md-9">
-<div class="card mb-3" style="width: 1244px;">
+
+<div class="card mb-3">
+<br>
 
 <div class="row gutters-sm">
+
 <div class="row">
+<br>
             <div class="col-md-10">
+            <h2 class="headingtable"  style="margin-left:24px;">Emergency Contact Details </h2>
+
             </div>
             <div class="col-md-2">
-             <%= button_to 'Add New',new_emergency_contact_path, class:" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800", :method => :get %>
+             <%= button_to 'Add New',new_emergency_contact_path, class:" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800", :method => :get , style:"margin-left: 46px;"%>
              </div>
             </div>
 </div>
    <div class="col-sm-12 mb-3">
       <div class="card h-100">
          <div class="card-body">
-            <h2 class="headingtable">Emergency Contact Details </h2>
             
                     
             <div class="col-md-12">
@@ -218,20 +223,20 @@ box-shadow: none!important;
             </table>
          </div>
       </div>
-   </div>
-</div>
-<div class="col-md-12">
+      <div class="col-md-12">
+<br>
  <div class="row">
  <div class="col-md-10">
+ <h1  class="headingtable" style="margin-left:24px;">Dependent</h1>
+
  </div>
  <div class="col-md-2">
  <button >
-   <%= link_to 'Add new ',new_dependent_path, class:" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800", :method => :get%>
+   <%= link_to 'Add new ',new_dependent_path, class:" focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800", :method => :get , style:"margin-left: 34px;"%>
    </button>
  </div>
  </div>
    <br>
-   <h1  class="headingtable" style="margin-left:24px;">Dependent</h1>
    <table class="table">
       <thead>
          <tr>
@@ -287,4 +292,6 @@ box-shadow: none!important;
       <% end %>
    </table>
 </div>
+</div>
+   </div>
 </div>

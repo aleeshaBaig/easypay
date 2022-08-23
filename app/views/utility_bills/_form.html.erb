@@ -1,114 +1,101 @@
+ <style>
+ .g-2, .gy-2 {
+   --bs-gutter-y: 2;
+}
+ </style>
  <br>
  <div class="container">
  <%= form_with model:@utility_bill do |form| %>
-<div class="row g-5">
+<div class="row g-2">
    <div class="col">
       <div class="form-group">
          <%= form.label :consumerId %>
-         <%= form.text_field :consumer_id,class:"form-control"%>
+         <%= form.text_field :consumer_id,class:"form-control", required: true %>
          <% @utility_bill.errors.full_messages_for(:consumer_id).each do |message| %>
          <div style="color: red"><%= message%></div>
          <% end %>
       </div>
    </div>
    <div class="col">
-      <div class="form-group">
-         <%= form.label :customer_name %>
-         <%= form.text_field :customer_name,class:"form-control"%>
+          <%= form.label :customer_name %>
+         <%= form.text_field :customer_name,class:"form-control", required: true %>
          <% @utility_bill.errors.full_messages_for(:customer_name).each do |message| %>
          <div style="color: red"><%= message%></div>
          <% end %>
-      </div>
-   </div>
-   <div class="row">
+    </div>
+   <div class="row g-2">
       <div class="col">
-         <div  class="form-group">
-            <%= form.label :focal_person %>
-            <%= form.text_field :focal_person,class:"form-control" %>
+             <%= form.label :focal_person %>
+            <%= form.text_field :focal_person,class:"form-control", required: true %>
             <% @utility_bill.errors.full_messages_for(:focal_person).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
       <div class="col">
-         <div class="form-group">
-            <%= form.label :CustomerId%>
-            <%= form.text_field :customer_id,class:"form-control"%>
+             <%= form.label :CustomerId%>
+            <%= form.text_field :customer_id,class:"form-control", required: true%>
             <% @utility_bill.errors.full_messages_for(:customer_id).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
      
    </div>
-<div class="row">
+<div class="row g-2">
  <div class="col">
-         <div  class="form-group">
-            <%= form.label :nickname %>
-            <%= form.text_field :nickname,class:"form-control" %>
+             <%= form.label :nickname %>
+            <%= form.text_field :nickname,class:"form-control" , required: true%>
             <% @utility_bill.errors.full_messages_for(:nickname).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
 </div>
 
-   <div class="row">
+   <div class="row g-2">
       <div class="col">
          <div data-controller="category">
-            <div class="form-group">
-               <%= form.label :Category %>
+                <%= form.label :Category %>
                <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, {prompt: true}, class:"form-control", "data-action" => "category#changeCategory"%>
                <% @utility_bill.errors.full_messages_for(:utility_bill_category_id).each do |message| %>
                <div style="color: red"><%= message%></div>
                <% end %>
-            </div>
-         </div>
+          </div>
       </div>
       <div class="col">
-         <div  class="form-group">
-            <%= form.label :Company%>
+             <%= form.label :Company%>
             <%= form.collection_select :company_id, [] , :id, :name, {prompt: true}, class:"form-control" %>
             <% @utility_bill.errors.full_messages_for(:company_id).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
    </div>
-   <div class="row">
+   <div class="row g-2">
       <div class="col">
-         <div  class="form-group">
-            <%= form.label :expected_reading_day %>
-            <%=form.text_field  :expected_reading_day, class:"form-control"%>
+             <%= form.label :expected_reading_day %>
+            <%=form.text_field  :expected_reading_day, class:"form-control" , required: true%>
             <% @utility_bill.errors.full_messages_for(:expected_reading_day).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
       <div class="col">
-         <div  class="form-group">
-            <%= form.label :expected_issuance_day %>
-            <%=form.text_field :expected_issuance_day, class:"form-control" %>
+             <%= form.label :expected_issuance_day %>
+            <%=form.text_field :expected_issuance_day, class:"form-control", required: true %>
             <% @utility_bill.errors.full_messages_for(:expected_issuance_day).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
       <div class="col">
-         <div  class="form-group">
-            <%= form.label :expected_due_day %>
-            <%=form.text_field :expected_due_day,class:"form-control" %>
+             <%= form.label :expected_due_day %>
+            <%=form.text_field :expected_due_day,class:"form-control", required: true %>
             <% @utility_bill.errors.full_messages_for(:expected_due_day).each do |message| %>
             <div style="color: red"><%= message%></div>
             <% end %>
-         </div>
-      </div>
+       </div>
    </div>
    <div  class="form-group">
       <%=form.hidden_field :user_id,  value:current_user.id %>
    </div>
    <br>
-   <div class="row">
+   <div class="row g-2">
       <div class="col-md-5">
       </div>
       <div class="col-md-7">
