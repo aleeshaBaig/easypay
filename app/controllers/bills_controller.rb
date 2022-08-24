@@ -3,8 +3,15 @@ before_action :authenticate_user!
 before_action :get_bill, only: [:show, :pay]
 
     def index
-    @bills = current_user.bills.where(["billing_month LIKE ?","%#{params[:search]}%"])
-    
+    # @search = BillSearch.new(params[:search])
+    # @bills = @search.scope
+    date_from = params[:date_from]
+    date_to = params[:date_to]
+    if date_from.present? and date_to.present?
+      @bills = current_user.bills.where("due_date >= ? and due_date <= ?", date_from, date_to)
+    else
+      @bills = current_user.bills
+    end
   end
  
     def show

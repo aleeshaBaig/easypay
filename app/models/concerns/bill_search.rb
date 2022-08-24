@@ -6,7 +6,7 @@ class BillSearch
          @date_to = parsed_date(params[:date_to], Date.today.to_s)
      end
      def scope
-         Bill.where('date BETWEEN ? AND ?', @date_from, @date_to)
+         Bill.where('created_date BETWEEN ? AND ?', @date_from, @date_to)
      end 
      private
      def parsed_date(date_string, default)
