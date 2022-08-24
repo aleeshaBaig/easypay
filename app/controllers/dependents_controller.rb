@@ -37,7 +37,7 @@ end
     @dependent = Dependent.find(params[:id])
     respond_to do |format|
     if @dependent.update(dependent_params)
-      format.html { redirect_to personal_informations_url(@dependent), notice: "dependents was successfully updated." }
+      format.html { redirect_to personal_informations_url(@personal_information), notice: "dependents was successfully updated." }
         format.json { render :show, status: :ok, location: @dependent }
      else
       format.html { render :edit, status: :unprocessable_entity }

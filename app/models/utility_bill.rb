@@ -24,4 +24,8 @@ class UtilityBill < ApplicationRecord
 
     end
   end
+
+   
 end
+
+ 

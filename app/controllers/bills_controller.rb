@@ -4,7 +4,9 @@ before_action :get_bill, only: [:show, :pay]
 
     def index
     @bills = current_user.bills.where(["billing_month LIKE ?","%#{params[:search]}%"])
-    end
+    
+  end
+ 
     def show
      @bill = Bill.find(params[:id])
     end

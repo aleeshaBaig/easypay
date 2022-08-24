@@ -11,6 +11,14 @@ before_action :authenticate_user!
       render json: {status: false, data: []}, status: 400
     end
   end
+  def list
+  @utility_bills = UtilityBill.includes(:category)
+  @utility_bills = UtilityBill.where('utility_bill_category_id like ?',"%#{params[:utility_bill_category_name]}%") if params[:utility_bill_category_name].present?
+  @utility_bills = UtilityBill.order("#{params[:column]} #{params[:direction]}")
+  render(partial: 'utility_bills', locals: {utility_bills: utility_bills})
+  
+
+  end
   def index
     @utility_bills = current_user.utility_bill
     respond_to do |format|

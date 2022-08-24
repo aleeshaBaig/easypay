@@ -42,7 +42,7 @@
          <!-- Name input -->
          <div class="form-outline">
                <%= form.label :residence_address, style: "display: block" %>
-    <%= form.text_field :residence_address ,class:"form-control"%>
+    <%= form.text_area :residence_address ,class:"form-control",style:"resize: none;height: 100px;width:715px;" %>
     <% @emergency_contact.errors.full_messages_for(:residence_address).each do |message| %>
       <div style="color: red"><%= message %></div>
        <% end %>
@@ -52,7 +52,7 @@
          <!-- Email input -->
          <div class="form-outline">
         <%= form.label :permanent_address, style: "display: block" %>
-    <%= form.text_field :permanent_address ,class:"form-control" %>
+        <%= form.text_area :permanent_address ,class:"form-control" ,style:"resize: none;height: 100px;width:715px;" %>
     <% @emergency_contact.errors.full_messages_for(:permanent_address).each do |message| %>
       <div style="color: red"><%= message %></div>
        <% end %>
