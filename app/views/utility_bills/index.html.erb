@@ -102,8 +102,7 @@ $("#search").on("click",function(e){
 $(document).ready(function () {
 	$("#utility_bill_category_id").on("change",function(e){
 		const utility_bill_category_id = event.target.value;
-		alert(utility_bill_category_id);
-		$.ajax({
+ 		$.ajax({
 			type: "GET",
 			url: "/get_companies",
 			data: {utility_bill_category_id: utility_bill_category_id},
