@@ -5,4 +5,7 @@ class Education < ApplicationRecord
   validates :major, presence: true, uniqueness: { scope: :user_id }
   validates :institute, presence: true
   validates :date, presence: true,uniqueness: { scope: :user_id }
+  enum institutes: [:ITU, :QueenMaryCollege, :GC, :UCP, :LC]
+
+
 end

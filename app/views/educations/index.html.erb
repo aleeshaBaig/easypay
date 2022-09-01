@@ -9,7 +9,10 @@
 <p style="color: green"><%= notice %></p>
 <br>
 <div class="row">
-<div class="col-md-10">
+<div class="col-md-10 w-1/3 text-center">
+<%= form_with do |form|%>
+<%= form.select :institute, Education.institutes.keys, {prompt:true},class:" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+<%end%>
 </div>
 <div class="col-md-2">
 <%= button_to 'Add new record',new_education_path , class:"text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get %>
@@ -21,33 +24,48 @@
 <table class="table">
 <thead>
 <tr>
-<th scope="col"></th>
-<th scope="col">Title</th>
+ <th scope="col">Title</th>
 <th scope="col">Major</th>
 <th scope="col">Institute</th>
 <th scope="col">Date</th>
  <th scope="col">Action </th>
 </tr>
 </thead>
-    <% @educations.each_with_index do |education, index | %>
-   <tbody>
-      <tr>
-      <th scope="row"><%= index +1 %></th>
-      <td><%= education.title %></td>
-      <td><%= education.major %></td>
-      <td><%= education.institute %></td>
-      <td><%= education.date %></td>
-       
-      <td>
-      <%= link_to raw("<i class=\"material-icons\">edit</i>"), edit_education_path(education.id) %> 
-  
-       <%= link_to raw("<i class=\"material-icons\">delete</i>"), education_path(education.id), data: {
-      turbo_method: :delete,
-      turbo_confirm: "Are you sure?"
-      } %> 
-     
-      </td>
-      </tr>
+    
+   <tbody id="abc">
+      <%= render @educations%>
       </tbody>
- <% end %>
 </table>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+
+$(document).ready(function()
+{
+ $('#institute').on("change",function(e){
+
+    var institute=e.target.value;
+        console.log(institute);
+
+          $.ajax({
+          type:"GET",
+          url: "/filter_institute",
+          data: {data: institute},
+          success: function(institute){
+          console.log("ok");
+  },
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+       console.log(XMLHttpRequest.responseText);
+      }
+      });//end ajax
+     });// end role_select
+
+
+     });// end role_select
+
+
+</script>
+

@@ -2,7 +2,7 @@ class UtilityBillsController < ApplicationController
 before_action :authenticate_user!
 
   def companies_details
-    utility_bill_category_id = params[:utility_bill_category_id]
+     utility_bill_category_id = params[:utility_bill_category_id]
     if utility_bill_category_id.present?
       companies = Company.select("id, name").where(utility_bill_category_id: utility_bill_category_id)
       
@@ -11,13 +11,35 @@ before_action :authenticate_user!
       render json: {status: false, data: []}, status: 400
     end
   end
-  def list
-  @utility_bills = UtilityBill.includes(:category)
-  @utility_bills = UtilityBill.where('utility_bill_category_id like ?',"%#{params[:utility_bill_category_name]}%") if params[:utility_bill_category_name].present?
-  @utility_bills = UtilityBill.order("#{params[:column]} #{params[:direction]}")
-  render(partial: 'utility_bills', locals: {utility_bills: utility_bills})
-  
+  def get_companies
+     
+    utility_bill_category_id = params[:utility_bill_category_id]
 
+    if utility_bill_category_id.present?
+      companies = Company.select("id, name").where(utility_bill_category_id: params[:utility_bill_category_id])
+      @bills= Bill.where(Comapany: companies)
+      render json: {status: true, data: companies.as_json}, status: 200
+    else
+      render json: {status: false, data: []}, status: 400
+
+    end
+
+  end
+  def search 
+       if params[:utility_bill_category_id].present? &&  params[:search_text_field].present?
+    @utility_bills = ((( UtilityBill.where(utility_bill_category_id: params[:utility_bill_category_id] ).and(UtilityBill.where(company_id: params[:search_by_com])))).where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id).where(user_id: current_user.id))  
+       
+    elsif params[:search_text_field].present?
+      @utility_bills = UtilityBill.where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id)
+
+    else
+      @utility_bills = ((( UtilityBill.where(utility_bill_category_id: params[:utility_bill_category_id] ).and(UtilityBill.where(company_id: params[:search_by_com])))).where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id).where(user_id: current_user.id)) 
+    end
+      respond_to do |format|
+        format.js
+        format.html {root_path}
+
+      end
   end
   def index
     @utility_bills = current_user.utility_bill

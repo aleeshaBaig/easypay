@@ -57,6 +57,21 @@ before_action :authenticate_user!
     end
   end
 
+
+  def filter_institute
+    
+    if params[:data].empty?
+   @educations=current_user.educations
+    else 
+   @educations= Education.where(institute: params[:data]).where(user_id: current_user.id) #object
+    end
+   respond_to do |format|
+    format.js
+    format.html {root_path}
+   end
+   
+  end
+
     private
     def  education_params
     params.require(:education).permit(:title, :major, :institute, :date, :user_id)

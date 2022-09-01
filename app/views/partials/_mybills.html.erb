@@ -12,11 +12,28 @@
 
    }
  </style>
+ <br>
 <div class="container">
+ <br>
+
   <div class="row">
-    <div class="col-md-8">
-     
+    <div class="col-md-2">
+     <%= form_with do |form|%>
+    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all , :id, :name, {prompt: "Filter by Category"}, class:"form-control", id:"utility_bill_category_id"%>
+ 
+    
   </div>
+  <div class="col-md-2">
+      <%= form.collection_select :company, Company.all , :id, :name, {prompt: "Filter by Company"}, class:"form-control", id:"search_by_com"%>
+   </div>
+   <div class="col-md-2">
+   <%= form.text_field :search_text_field, class:"form-control", placeholder:"Search here !" , id:"search_text_field"%>
+      <% end %>
+
+   </div>
+   <div class="col-md-2">
+   <button id="search" class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Search</button>
+   </div>
   <!-- Snip the table -->
      <div class="col-md-2">
      <%= button_to'Export to Excel',utility_bills_url(format: :csv) , class:"text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2",:method => :get %>
@@ -46,6 +63,7 @@
     <th>Bills</th>
     <th colspan="2" >Action</th>
     </tr>
+    <tbody id ="utility_bill_filter">
   <% @utility_bills.each_with_index do |utility_bill, index| %>
     <tr>
       <td><%= index +1 %></td>
@@ -67,11 +85,36 @@
        </td>  
               
      </tr> 
-  <% end %>   
+  <% end %>  
+  </tbody> 
 </table> 
     
   </div>
 
 </div>
   
- 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function () {
+  $("#search").on("click",function(e){
+    var utility_bill_category_id = $("#utility_bill_category_id").val();
+    var search_by_com = $("#search_by_com").val();
+    var search_text_field = $("#search_text_field").val();
+        alert(utility_bill_category_id + search_by_com+search_text_field);
+
+    $.ajax({
+      type: "GET",
+      url: "/search",
+      data: {utility_bill_category_id: utility_bill_category_id, search_by_com: search_by_com, search_text_field: search_text_field},
+      success: function(){
+        alert("ok");
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown){
+        alert(XMLHttpRequest, responseText)
+      }
+    });
+  });
+  
+})
+</script>

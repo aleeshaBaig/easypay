@@ -1,0 +1,18 @@
+<tr>
+      <td><%= education.title %></td>
+      <td><%= education.major %></td>
+      <td><%= education.institute %></td>
+      <td><%= education.date %></td>
+       
+      <td>
+      <%= link_to raw("<i class=\"material-icons\">edit</i>"), edit_education_path(education.id) %> 
+  
+       <%= link_to raw("<i class=\"material-icons\">delete</i>"), education_path(education.id), data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      } %> 
+     
+      </td>
+      </tr>
+
+      
