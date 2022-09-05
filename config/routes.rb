@@ -33,6 +33,7 @@ Rails.application.routes.draw do
  get"/search_bar_field", to:"bills#search_bar_field"
  get"/search", to: "utility_bills#search"
  get"/get_companies", to: "utility_bills#get_companies"
+ get"/reset_form", to: "utility_bills#reset_form"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

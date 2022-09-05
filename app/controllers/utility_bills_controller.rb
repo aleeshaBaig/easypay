@@ -11,6 +11,8 @@ before_action :authenticate_user!
       render json: {status: false, data: []}, status: 400
     end
   end
+
+
   def get_companies
      
     utility_bill_category_id = params[:utility_bill_category_id]
@@ -25,22 +27,33 @@ before_action :authenticate_user!
     end
 
   end
+ 
   def search 
-       if params[:utility_bill_category_id].present? &&  params[:search_text_field].present?
-    @utility_bills = ((( UtilityBill.where(utility_bill_category_id: params[:utility_bill_category_id] ).and(UtilityBill.where(company_id: params[:search_by_com])))).where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id).where(user_id: current_user.id))  
-       
-    elsif params[:search_text_field].present?
-      @utility_bills = UtilityBill.where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id)
-
-    else
-      @utility_bills = ((( UtilityBill.where(utility_bill_category_id: params[:utility_bill_category_id] ).and(UtilityBill.where(company_id: params[:search_by_com])))).where("customer_name LIKE?","%#{params[:search_text_field]}%").where(user_id: current_user.id).where(user_id: current_user.id)) 
+    utility_bill_category_id = params[:utility_bill_category_id]
+    company_id = params[:search_by_com]
+    customer_name = params[:search_text_field]
+    
+    if utility_bill_category_id.present? && company_id.present? && customer_name.present?
+      @utility_bills = UtilityBill.where("utility_bill_category_id = ? and company_id= ?  and customer_name LIKE ?",utility_bill_category_id, company_id, "%#{customer_name}%").where(user_id: current_user.id)
+    elsif utility_bill_category_id.present? && company_id.present?
+      @utility_bills = UtilityBill.where("utility_bill_category_id = ? and company_id = ?", utility_bill_category_id, company_id).where(user_id: current_user.id)
+    elsif utility_bill_category_id.present? && customer_name.present?
+      @utility_bills = UtilityBill.where("utility_bill_category_id = ? and customer_name = ?", utility_bill_category_id, customer_name).where(user_id: current_user.id)
+    elsif utility_bill_category_id.present?
+      @utility_bills = UtilityBill.where("utility_bill_category_id = ?", utility_bill_category_id).where(user_id: current_user.id)
+      elsif company_id.present?
+        @utility_bills = UtilityBill.where("company_id = ?", company_id).where(user_id: current_user.id)
+        elsif customer_name.present?
+          @utility_bills = UtilityBill.where("customer_name LIKE ?", "%#{customer_name}%").where(user_id: current_user.id)
+      else
+        @utility_bills = current_user.utility_bills
     end
-      respond_to do |format|
-        format.js
-        format.html {root_path}
+    
+    
 
-      end
   end
+
+
   def index
     @utility_bills = current_user.utility_bill
     respond_to do |format|
@@ -82,6 +95,7 @@ before_action :authenticate_user!
   def edit
     @utility_bill = UtilityBill.find(params[:id])
   end
+  
   def update
     @utility_bill = UtilityBill.find(params[:id])     
     respond_to do |format|

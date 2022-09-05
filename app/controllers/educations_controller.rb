@@ -60,10 +60,12 @@ before_action :authenticate_user!
 
   def filter_institute
     
-    if params[:data].empty?
-   @educations=current_user.educations
+    if params[:data].present?
+      @educations= Education.where(institute: params[:data]).where(user_id: current_user.id) #object
+
     else 
-   @educations= Education.where(institute: params[:data]).where(user_id: current_user.id) #object
+      @educations=current_user.educations
+
     end
    respond_to do |format|
     format.js
