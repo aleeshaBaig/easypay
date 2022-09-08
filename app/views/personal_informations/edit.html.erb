@@ -1,6 +1,5 @@
  <br>
-</div>
-<div class="col-md-3">
+ <div class="col-md-3">
 </div>
 <div></div>
 <div class="container">
@@ -18,7 +17,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Firstname *</label>
-                              <%= form.text_field :first_name,  class:"bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  %>
+                              <%= form.text_field :first_name, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
                               <% @personal_information.errors.full_messages_for(:first_name).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                            
@@ -27,7 +26,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Lastname *</label>
-                              <%= form.text_field :last_name, class:"form-control"  %>
+                              <%= form.text_field :last_name, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:last_name).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                        
@@ -36,7 +35,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Date of Birth*</label>
-                              <%= form.date_field :date_of_birth,  class:"form-control"  %>
+                              <%= form.date_field :date_of_birth, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:date_of_birth).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                    
@@ -45,7 +44,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">employee Code*</label>
-                              <%= form.text_field :employee_code, class:"form-control"  %>
+                              <%= form.text_field :employee_code, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:employee_code).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                   
@@ -54,7 +53,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Designation*</label>
-                              <%= form.text_field :designation, class:"form-control"  %>
+                              <%= form.text_field :designation, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:designation).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                   
@@ -63,7 +62,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Project*</label>
-                              <%= form.text_field :project, class:"form-control"  %>
+                              <%= form.text_field :project, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:project).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                   
@@ -72,7 +71,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Department*</label>
-                              <%= form.text_field :department,  class:"form-control"  %>
+                              <%= form.text_field :department, class: "form-control" %>
                               <% @personal_information.errors.full_messages_for(:departemnt).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                   
@@ -81,7 +80,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Employment Type*</label>
-                              <%= form.select :employment_type, options_for_select(PersonalInformation.employment_types.keys),   class:"dropdown-menu" %>
+                              <%= form.select :employment_type, options_for_select(PersonalInformation.employment_types.keys), class: "dropdown-menu" %>
                               <% @personal_information.errors.full_messages_for(:employment_type).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                 
@@ -90,7 +89,7 @@
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="form_name">Marital Status*</label>
-                              <%= form.select :marital_status, options_for_select(PersonalInformation.marital_statuses.keys), class:"form-select" %>
+                              <%= form.select :marital_status, options_for_select(PersonalInformation.marital_statuses.keys), class: "form-select" %>
                               <% @personal_information.errors.full_messages_for(:marital_status).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>                                                            
@@ -100,17 +99,17 @@
                      <div class="row">
                         <div class="col-md-12">
                            <div class="form-group">
-                              <%= form.file_field :image,  class:"fblock w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
+                              <%= form.file_field :image, class: "fblock w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" %>
                               <% @personal_information.errors.full_messages_for(:image).each do |message| %>
                               <div style="color: red"><%= message %></div>
                               <% end %>
                            </div>
                         </div>
-                        <%=form.hidden_field :user_id,  value:current_user.id %>
+                        <%= form.hidden_field :user_id, value: current_user.id %>
                         <br>
                         <div class="col-md-12">
                            <br>
-                           <%= form.submit  class:"text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"%>
+                           <%= form.submit class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
 
                         </div>
                      </div>

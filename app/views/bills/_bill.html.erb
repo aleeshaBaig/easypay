@@ -1,8 +1,7 @@
- 
-   <tr>
+     <tr>
        
        <td><a href="/bills/<%= bill.id %>"><%= bill.amount %></a></td>
-      <td><%= bill.billing_month%></td>
+      <td><%= bill.billing_month %></td>
       <td><%= bill.late_fee %></td>
       <td><%= bill.reading_date %></td>
       <td><%= bill.issuance_date %></td>
@@ -12,16 +11,16 @@
  
       <% if (bill.status == "Unpaid") || (bill.status == "Pending") %>
        <button class="btn btn-danger"> 
-        <%= link_to "Pay Now", pay_bills_path(id:bill.id), data: {turbo_method: :post,turbo_confirm: "Are you sure?"} %>
+        <%= link_to "Pay Now", pay_bills_path(id: bill.id), data: { turbo_method: :post, turbo_confirm: "Are you sure?" } %>
        </button>
       <% else %>
       <button class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" >
-      <%= link_to'Paid' , root_path %>
+      <%= link_to "Paid", root_path %>
       </button>
            <%= link_to raw("<i class=\"material-icons\">delete</i>"), bill_path(bill.id), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %> 
+                                                                                            turbo_method: :delete,
+                                                                                            turbo_confirm: "Are you sure?",
+                                                                                          } %> 
       </button>
       <% end %>
       </td>

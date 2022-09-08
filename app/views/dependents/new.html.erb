@@ -17,7 +17,7 @@
          <!-- Name input -->
          <div class="form-outline">
             <%= form.label :name %><br>
-            <%= form.text_field :name,class:"form-control" %>
+            <%= form.text_field :name, class: "form-control" %>
             <% @dependent.errors.full_messages_for(:name).each do |message| %>
             <div style="color: red"><%= message %></div>
             <% end %>
@@ -27,7 +27,7 @@
          <!-- Email input -->
          <div class="form-outline">
             <%= form.label :relation %><br>
-            <%= form.text_field :relation ,class:"form-control"%>
+            <%= form.text_field :relation, class: "form-control" %>
             <% @dependent.errors.full_messages_for(:relation).each do |message| %>
             <div style="color: red"><%= message %></div>
             <% end %>
@@ -41,7 +41,7 @@
    <!-- Email input -->
    <div class="form-outline">
       <%= form.label :phone %><br>
-      <%= form.text_field :phone ,class:"form-control"%>
+      <%= form.text_field :phone, class: "form-control" %>
       <% @dependent.errors.full_messages_for(:phone).each do |message| %>
       <div style="color: red"><%= message %></div>
       <% end %>
@@ -51,7 +51,7 @@
      <!-- Name input -->
      <div class="form-outline">
         <%= form.label :date_of_birth %><br>
-        <%= form.date_field :date_of_birth ,class:"form-control"%>
+        <%= form.date_field :date_of_birth, class: "form-control" %>
         <% @dependent.errors.full_messages_for(:date_of_birth).each do |message| %>
         <div style="color: red"><%= message %></div>
         <% end %>
@@ -69,7 +69,7 @@
          <!-- Email input -->
          <div class="form-outline">
             <%= form.label :address %><br>
-            <%= form.text_field :address,class:"form-control" %>
+            <%= form.text_field :address, class: "form-control" %>
             <% @dependent.errors.full_messages_for(:address).each do |message| %>
             <div style="color: red"><%= message %></div>
             <% end %>
@@ -79,7 +79,7 @@
          <!-- Email input -->
          <div class="form-outline">
             <%= form.label :cnic %><br>
-            <%= form.text_field :cnic ,class:"form-control"%>
+            <%= form.text_field :cnic, class: "form-control" %>
             <% @dependent.errors.full_messages_for(:cnic).each do |message| %>
             <div style="color: red"><%= message %></div>
             <% end %>
@@ -89,12 +89,12 @@
 
 
       </div>
-      <div class="row g-5"
+      <div class="row g-5">
       <div class="col" >
          <!-- Email input -->
          <div class="form-outline">
             <%= form.label :nationality %><br>
-            <%= form.text_field :nationality ,class:"form-control"%>
+            <%= form.text_field :nationality, class: "form-control" %>
             <% @dependent.errors.full_messages_for(:nationality).each do |message| %>
             <div style="color: red"><%= message %></div>
             <% end %>
@@ -102,13 +102,13 @@
       </div>
    </div>
    <div  class="form-group">
-      <%=form.hidden_field :user_id,  value:current_user.id %>
+      <%= form.hidden_field :user_id, value: current_user.id %>
    </div>
    <br>
    <div class="row">
       <div class="col-md-5"></div>
       <div class="col-md-7">
-         	<%= form.submit  class:"text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+         	<%= form.submit class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
       
       </div>
    </div>
