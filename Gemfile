@@ -10,6 +10,10 @@ gem 'mini_magick'
 gem 'active_storage_validations'
 gem 'client_side_validations'
 gem 'acts-as-taggable-on'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+gem 'mime-types', require: 'mime/types/full'
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"

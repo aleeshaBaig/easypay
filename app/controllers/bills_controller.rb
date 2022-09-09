@@ -52,6 +52,13 @@ class BillsController < ApplicationController
    
       def show
        @bill = Bill.find(params[:id])
+
+       respond_to do |format|
+        format.html
+        format.pdf do
+          render pdf: "file_name"   # Excluding ".pdf" extension.
+        end
+      end
       end
     def pay
       if (@bill.status == "Unpaid") || (@bill.status == "Pending")

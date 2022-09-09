@@ -1,7 +1,7 @@
 class Bill < ApplicationRecord
 belongs_to :user
 belongs_to :utility_bill
-
+ 
 validates :amount, presence: true
 validates :billing_month, presence: true
 validates :late_fee, presence: true

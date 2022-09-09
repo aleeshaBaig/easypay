@@ -1,145 +1,128 @@
 <div class="container">
-   <div class="container">
-           <div>
-           <div class="row">
-               <div class="col-md-6">
-               </div>
-               <div class="col-md-3">
-               </div>
-              <div class="col-md-3">
-                     <br>
-              </div>
-            </div>
-            </div>
-             <h2 class="headingtable"><%= link_to "My Bills", bills_url %></h2>
-                <br>
-                <p id= "demo" ></p>
-                <div class="row">
-                    <div class="col-md-2">
-                      <%= form_with do |form| %>
-                      <%= form.select :billing_month, Bill.billing_months.keys, { prompt: true }, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
-                      <% end %>
-                      </div>
-                <div class="col-md-3">
-                      <%= form_with do |form| %>
-                            <%= form.date_field :date_from %>
-                            to
-                            <%= form.date_field :date_to %>
-                      <% end %>
-                </div>
-                      <div class="col-md-1">
-                          <button id="search" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">search</button>
-                      </div>
-                      <div class="col-md-1"></div>
-                      <div class="col-md-3"></div>
-            </div>
-              <br>
-           <div class="row">
-                      <div class="col-md-4">
-                   
-                      </div>
-                      <div class="col-md-3">
-                      <br>
- 
-                      </div>
-                      <div class="col-md-2">
-                      
-
-
-                      </div>
-                      <div class="col-md-2">
-                            <%= button_to "Add New Bill", new_bill_url, class: "text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get %>
-                      </div>
-          </div>
-          <table class="table table-striped table-bordered" id="table11"    style="width: -webkit-fill-available;">   
-                 <thead>
-                        <tr>   
-                            <th>Amount</th>   
-                            <th>Billing Month </th>
-                            <th>Late_Fee</th>   
-                            <th>Reading Date</th>
-                            <th>Issuance Date</th>
-                            <th>Due Date</th> 
-                             <th>Status</th>   
-                            <th> Action</th>
-                        </tr>
-                </thead>
-               <tbody id="filter_table">
-                    <%= render @bills %>
-              </tbody>
-          </table> 
-        </div>
+	<div class="container">
+		<div>
+			<div class="row">
+				<div class="col-md-6"> </div>
+				<div class="col-md-3"> </div>
+				<div class="col-md-3">
+					<br> </div>
+			</div>
+		</div>
+		<h2 class="headingtable"><%= link_to "My Bills", bills_url %></h2>
+		<br>
+		<p id="demo"></p>
+		<div class="row">
+			<div class="col-md-2">
+				<%= form_with do |form| %>
+					<%= form.select :billing_month, Bill.billing_months.keys, { prompt: true }, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+						<% end %>
+			</div>
+			<div class="col-md-2">
+				<%= form_with do |form| %>
+					<%= form.date_field :date_from, class: "form-control" %>
+			</div>
+			<div class="col-md-2">
+				<%= form.date_field :date_to, class: "form-control" %>
+					<% end %>
+			</div>
+			<div class="col-md-1">
+				<button id="search" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">search</button>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-3"></div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-4"> </div>
+			<div class="col-md-3">
+				<br> </div>
+			<div class="col-md-2"> </div>
+			<div class="col-md-2">
+				<%= button_to "Add New Bill", new_bill_url, class: "text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get %>
+			</div>
+		</div>
+		<table class="table table-striped table-bordered" id="table11" style="width: -webkit-fill-available;">
+			<thead>
+				<tr>
+					<th>Amount</th>
+					<th>Billing Month </th>
+					<th>Late_Fee</th>
+					<th>Reading Date</th>
+					<th>Issuance Date</th>
+					<th>Due Date</th>
+					<th>Status</th>
+					<th> Action</th>
+				</tr>
+			</thead>
+			<tbody id="filter_table">
+				<%= render @bills %>
+			</tbody>
+		</table>
+	</div>
 </div>
- 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
 <script>
-
-$(document).ready(function()
-{
- $('select').on("change",function(e){
-
-  var billing_month=e.target.value;
- 
-
-      $.ajax({
-        type:"GET",
-        url:"/filter_billing_month",
-        data:{data: billing_month},
-        success: function(billing_month){
-           console.log("ok");
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-          console.log(XMLHttpRequest.responseText);
-         }
-      });
- });// end role_select
-});// end role_select
-
-
+$(document).ready(function() {
+	$('select').on("change", function(e) {
+		var billing_month = e.target.value;
+		$.ajax({
+			type: "GET",
+			url: "/filter_billing_month",
+			data: {
+				data: billing_month
+			},
+			success: function(billing_month) {
+				console.log("ok");
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log(XMLHttpRequest.responseText);
+			}
+		});
+	}); // end role_select
+}); // end role_select
 </script>
 <script>
-$(document).ready(function(){
-  $('#search').on("click",function(e){
-   var date_from = $("#date_from").val();
-   var date_to  = $("#date_to").val();
-   alert("ok");
-   $.ajax({
-    type: "GET",
-    url: "/date_range",
-    data: {date_from: date_from, date_to: date_to},
-    success: function(){
-      alert("ok")
-      console.log("ok")
-    },
-    error: function(XMLHttpRequest, textStatus, errorThrown){
-      console.log(XMLHttpRequest, responseText)
-    }
-   })
-       
-      
-       
-     
-  });
+$(document).ready(function() {
+	$('#search').on("click", function(e) {
+		var date_from = $("#date_from").val();
+		var date_to = $("#date_to").val();
+		alert("ok");
+		$.ajax({
+			type: "GET",
+			url: "/date_range",
+			data: {
+				date_from: date_from,
+				date_to: date_to
+			},
+			success: function() {
+				alert("ok")
+				console.log("ok")
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log(XMLHttpRequest, responseText)
+			}
+		})
+	});
 });
 </script>
 <script>
-$(document).ready(function(){
-  $("#search_bar").on("click",function(e){
-    var search_bar_field = $("#search_bar_field").val();
-    alert(search_bar_field);
-    $.ajax({
-      type:"GET",
-      url: "/search_bar_field",
-      data: {search_bar_field: search_bar_field},
-      success: function(){
-        alert("ok");
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown){
-        console.log(XMLHttpRequest, responseText)
-      }
-    });
-   });
+$(document).ready(function() {
+	$("#search_bar").on("click", function(e) {
+		var search_bar_field = $("#search_bar_field").val();
+		alert(search_bar_field);
+		$.ajax({
+			type: "GET",
+			url: "/search_bar_field",
+			data: {
+				search_bar_field: search_bar_field
+			},
+			success: function() {
+				alert("ok");
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				console.log(XMLHttpRequest, responseText)
+			}
+		});
+	});
 });
 </script>
