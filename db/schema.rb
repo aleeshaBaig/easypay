@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_24_072352) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_09_054417) do
   create_table "additional_informations", force: :cascade do |t|
     t.string "place_of_birth"
     t.string "domicile"
@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_24_072352) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "billing_month"
+    t.string "file"
     t.index ["user_id"], name: "index_bills_on_user_id"
     t.index ["utility_bill_id"], name: "index_bills_on_utility_bill_id"
   end
