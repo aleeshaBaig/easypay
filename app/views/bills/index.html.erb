@@ -86,8 +86,7 @@ $(document).ready(function() {
 	$('#search').on("click", function(e) {
 		var date_from = $("#date_from").val();
 		var date_to = $("#date_to").val();
-		alert("ok");
-		$.ajax({
+ 		$.ajax({
 			type: "GET",
 			url: "/date_range",
 			data: {
@@ -95,8 +94,7 @@ $(document).ready(function() {
 				date_to: date_to
 			},
 			success: function() {
-				alert("ok")
-				console.log("ok")
+				 
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				console.log(XMLHttpRequest, responseText)

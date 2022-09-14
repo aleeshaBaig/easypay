@@ -15,7 +15,7 @@ class UtilityBill < ApplicationRecord
   belongs_to :company
 
   def self.to_csv
-    attribute = %w{ id consumer_id customer_id customer_name focal_person utility_bill_category.name company_id nickname expected_reading_day expected_issuance_day expected_due_day}
+    attribute = %w{ id consumer_id customer_id customer_name focal_person utility_bill_category_id company_id nickname expected_reading_day expected_issuance_day expected_due_day}
     CSV.generate(headers: true) do |csv|
       csv << attribute
       all.each do |utility_bill|

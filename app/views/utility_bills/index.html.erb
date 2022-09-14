@@ -14,17 +14,33 @@ h1, h2, h3, h4, h5, h6 {
 		<div class="col-md-2">
 	       <%= form_with url: "/utility_bills", id: "reset", method: :get do |form| %>
 	           <div data-controller="category">
-			       <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
+               <% if params[:utility_bill_category_id].present? %>
+                 <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: true, selected: params[:utility_bill_category_id] }, class: "form-control" %>
+                 
+                 <% else %>
+                 <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
+                 <% end %>
 		        </div>
         </div>
+
         <div class="col-md-2">
-                   <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter by Company" }, class: "form-control", id: "company_id" %>
+            <% if params[:utility_bill_category_id].present? && params[:company_id].present? %>
+              <%= form.collection_select :company_id, Company.where(utility_bill_category_id: params[:utility_bill_category_id]), :id, :name, { prompt: true, selected: params[:company_id] }, class: "form-control" %>
+            <% else %>
+              <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter By Company" }, class: "form-control", id: "company_id" %>
+            <% end %>
         </div>
+
         <div class="col-md-2">
-                   <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field" %>
+        <% if params[:search_text_field] %>
+                   <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field", value: params[:search_text_field] %>
+         <% else %>
+         <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field" %>
+         <% end %>
+
 	    </div>
         <div class="col-md-1">
-	               <%= form.submit "Search", class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" %>
+	               <%= form.submit "Search", class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700", id: "search" %>
 	        <% end %>
         </div>
         <div class="col-md-1">
@@ -178,3 +194,10 @@ h1, h2, h3, h4, h5, h6 {
         var row = "<option value=\"" + "" + "\">" + "Filter by Company" + "</option>";
         $(row).appendTo("#company_id");
     } </script>
+    <script>
+    $(document).ready(function () {
+    $('#reset').form({
+        stateSave: true,
+    });
+});
+</script>
