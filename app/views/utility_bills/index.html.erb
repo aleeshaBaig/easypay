@@ -9,53 +9,53 @@ h1, h2, h3, h4, h5, h6 {
 }
 </style>
 <br>
-  <div class="row">
-      <br>
-		<div class="col-md-2">
-	       <%= form_with url: "/utility_bills", id: "reset", method: :get do |form| %>
+ 
+
+<br>
+<%= form_with url: "/utility_bills", id: "reset", method: :get do |form| %>
+      <div class="row">
+          <div class="col-md-2">
 	           <div data-controller="category">
-               <% if params[:utility_bill_category_id].present? %>
-                 <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: true, selected: params[:utility_bill_category_id] }, class: "form-control" %>
-                 
-                 <% else %>
-                 <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
-                 <% end %>
-		        </div>
-        </div>
-
-        <div class="col-md-2">
-            <% if params[:utility_bill_category_id].present? && params[:company_id].present? %>
-              <%= form.collection_select :company_id, Company.where(utility_bill_category_id: params[:utility_bill_category_id]), :id, :name, { prompt: true, selected: params[:company_id] }, class: "form-control" %>
-            <% else %>
-              <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter By Company" }, class: "form-control", id: "company_id" %>
-            <% end %>
-        </div>
-
-        <div class="col-md-2">
-        <% if params[:search_text_field] %>
-                   <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field", value: params[:search_text_field] %>
-         <% else %>
-         <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field" %>
-         <% end %>
-
-	    </div>
-        <div class="col-md-1">
-	               <%= form.submit "Search", class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700", id: "search" %>
-	        <% end %>
-        </div>
-        <div class="col-md-1">
-            <button id="reset" onclick="myFunction()"  class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
-        </div>
+                    <% if @utility_bill_category_id.present? %>
+                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: true, selected: @utility_bill_category_id }, class: "form-control" %>
+                    <% else %>
+                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
+                    <% end %>
+              </div>
+         </div>
+          <div class="col-md-2">
+                    <% if @utility_bill_category_id.present? && @company_id.present? %>
+                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: true, selected: @company_id }, class: "form-control" %>
+                    <% else %>
+                    <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter By Company" }, class: "form-control", id: "company_id" %>
+                    <% end %>
+          </div>
+          <div class="col-md-2">
+                    <% if @customer_name %>
+                    <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field", value: @customer_name %>
+                    <% else %>
+                    <%= form.text_field :search_text_field, class: "form-control", placeholder: "Search by Customer name", id: "search_text_field" %>
+                    <% end %>
+          </div>
+          <div class="col-md-1">
+ 	                  <%= form.submit "Search", class: "text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" %>
+          </div>
+          <div class="col-md-1">
+                    <button  onclick="myFunction()"  class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Reset</button>
+          </div>
         <div class="col-md-1">
         </div>
-	    <div class="col-md-1">
-          <%= link_to "Export", utility_bills_url(request.parameters.merge({ format: :csv })), download: "utility_bills.csv", class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+	      <div class="col-md-1">
+                    <%= link_to "Export", utility_bills_url(request.parameters.merge({ format: :csv })), download: "utility_bills.csv", class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
         </div>
     
         <div class="col-md-1">
-		   <%= link_to "Add ", new_utility_bill_url, class: " text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get %>
+		                <%= link_to "Add ", new_utility_bill_url, class: " text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2", :method => :get %>
         </div>
-  </div>
+
+    </div>
+<% end %>
+
   <br>
   <div class="row">
       <h1 class="headingtable" style="background-color: #d5f7cc !important;"><%= link_to "Utilities", utility_bills_url %></h1>
@@ -104,12 +104,12 @@ h1, h2, h3, h4, h5, h6 {
   </div>
  
  <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" > </script> 
-<script >
+<script>
     $(document).ready(function() {
         $("#search").on("click", function(e) {
             var utility_bill_category_id = $("#utility_bill_category_id").val();
             var search_by_com = $("#company_id").val();
-            var search_text_field = $("#search_text_field").val();
+            var search_text_field = $("#search_bar").val();
             $.ajax({
                 type: "GET",
                 url: "/search",
@@ -194,10 +194,6 @@ h1, h2, h3, h4, h5, h6 {
         var row = "<option value=\"" + "" + "\">" + "Filter by Company" + "</option>";
         $(row).appendTo("#company_id");
     } </script>
-    <script>
-    $(document).ready(function () {
-    $('#reset').form({
-        stateSave: true,
-    });
-});
-</script>
+ 
+
+

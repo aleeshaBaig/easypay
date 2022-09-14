@@ -25,33 +25,37 @@ class UtilityBillsController < ApplicationController
 		end
 
 	end
-
+   
 
   
   
 
  def index
-  utility_bill_category_id = params[:utility_bill_category_id]
-  company_id = params[:company_id]
-  customer_name = params[:search_text_field]
+
+ 
+  @utility_bill_category_id = params[:utility_bill_category_id]
+  @company_id = params[:company_id]
+  @customer_name = params[:search_text_field]
    
 
-  if utility_bill_category_id.present? && company_id.present? && customer_name.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and company_id= ?  and customer_name LIKE ?",utility_bill_category_id, company_id, "%#{customer_name}%").where(user_id: current_user.id)
-  elsif utility_bill_category_id.present? && company_id.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and company_id = ?", utility_bill_category_id, company_id).where(user_id: current_user.id)
-  elsif utility_bill_category_id.present? && customer_name.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and customer_name = ?", utility_bill_category_id, customer_name).where(user_id: current_user.id)
-  elsif utility_bill_category_id.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ?", utility_bill_category_id).where(user_id: current_user.id)
-  elsif company_id.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("company_id = ?", company_id).where(user_id: current_user.id)
-  elsif customer_name.present?
-    @utility_bills = UtilityBill.includes(:utility_bill_category).where("customer_name LIKE ?", "%#{customer_name}%").where(user_id: current_user.id)
+  if @utility_bill_category_id.present? && @company_id.present? && @customer_name.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and company_id= ?  and customer_name LIKE ?",@utility_bill_category_id, @company_id, "%#{@customer_name}%").where(user_id: current_user.id)
+  elsif @utility_bill_category_id.present? && @company_id.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and company_id = ?", @utility_bill_category_id, @company_id).where(user_id: current_user.id)
+  elsif @utility_bill_category_id.present? && @customer_name.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ? and customer_name = ?", @utility_bill_category_id, @customer_name).where(user_id: current_user.id)
+  elsif @utility_bill_category_id.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("utility_bill_category_id = ?", @utility_bill_category_id).where(user_id: current_user.id)
+  elsif @company_id.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("company_id = ?", @company_id).where(user_id: current_user.id)
+  elsif @customer_name.present?
+    @utility_bills = UtilityBill.includes(:utility_bill_category).where("customer_name LIKE ?", "%#{@customer_name}%").where(user_id: current_user.id)
   else
     @utility_bills = current_user.utility_bill
   end
-        respond_to do |format|
+      respond_to do |format|
+
+    format.js
     format.html
     format.csv { send_data @utility_bills.to_csv }
 	    end
