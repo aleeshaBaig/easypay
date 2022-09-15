@@ -14,8 +14,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mime-types', require: 'mime/types/full'
 gem 'pagy', '~> 5.10' # omit patch digit
- 
-
+gem 'popper_js', '~> 2.11.5'
+gem 'bootstrap' 
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

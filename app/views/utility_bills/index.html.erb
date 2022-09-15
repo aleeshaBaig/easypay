@@ -48,15 +48,15 @@ h1, h2, h3, h4, h5, h6 {
           <div class="col-md-2">
 	           <div data-controller="category">
                     <% if @utility_bill_category_id.present? %>
-                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: true, selected: @utility_bill_category_id }, class: "form-control" %>
+                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: true, selected: @utility_bill_category_id }, class: "form-control", id: "utility_bill_category_id" %>
                     <% else %>
                     <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
                     <% end %>
               </div>
          </div>
           <div class="col-md-2">
-                    <% if @utility_bill_category_id.present? && @company_id.present? %>
-                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: true, selected: @company_id }, class: "form-control" %>
+                    <% if @utility_bill_category_id.present? || @company_id.present? %>
+                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: "Filter By Company", selected: @company_id }, class: "form-control", id: "company_id" %>
                     <% else %>
                     <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter By Company" }, class: "form-control", id: "company_id" %>
                     <% end %>
@@ -90,8 +90,10 @@ h1, h2, h3, h4, h5, h6 {
   <br>
   <div class="row">
   <div class= "col-md-6">
+  
   </div>
   <div class="col-md-4">
+  
   
   </div>
   <div class="col-md-2">
@@ -198,8 +200,8 @@ h1, h2, h3, h4, h5, h6 {
                                     $(row).appendTo("#company_id");
                                 });
                             } else {
-                                var row = "<option value=\"" + "" + "\">" + "Select" + "</option>";
-                                $(row).appendTo("#company_id").remove();
+                              row = "<option value=\"" + rdata[i].id + "\">" + rdata[i].name + "</option>";
+                                    $(row).appendTo("#company_id");
                             }
                         }
                     },
@@ -212,8 +214,9 @@ h1, h2, h3, h4, h5, h6 {
 
 
             } else {
-                addRow();
-
+           $("#company_id ").remove();
+           row = "<option value=\"" + rdata[i].id + "\">" + rdata[i].name + "</option>";
+                                    $(row).appendTo("#company_id");
 
             }
 
@@ -234,9 +237,9 @@ h1, h2, h3, h4, h5, h6 {
 		</script>
 		 <script >
     function addRow() {
-        $("#company_id option").remove();
-        var row = "<option value=\"" + "" + "\">" + "Filter by Company" + "</option>";
-        $(row).appendTo("#company_id");
+        $("#company_id ").remove();
+      row = "<option value=\"" + rdata[i].id + "\">" + rdata[i].name + "</option>";
+                                    $(row).appendTo("#company_id");
     } </script>
  
 
