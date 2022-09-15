@@ -13,6 +13,9 @@ gem 'acts-as-taggable-on'
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'mime-types', require: 'mime/types/full'
+gem 'pagy', '~> 5.10' # omit patch digit
+ 
+
 
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

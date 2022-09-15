@@ -63,7 +63,7 @@
 			<div class="row">
 				<div class="col">
 					<%= form.label :utility_bill_id %>
-						<%= form.collection_select :utility_bill_id, UtilityBill.all, :id, :nickname, { prompt: true }, class: "form-control" %>
+						<%= form.collection_select :utility_bill_id, UtilityBill.where(user_id: current_user.id), :id, :nickname, { prompt: true }, class: "form-control" %>
 							<% @bill.errors.full_messages_for(:utility_bill_id).each do |message| %>
 								<div style="color: red">
 									<%= message %>
