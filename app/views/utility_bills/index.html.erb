@@ -48,7 +48,7 @@ h1, h2, h3, h4, h5, h6 {
           <div class="col-md-2">
 	           <div data-controller="category">
                     <% if @utility_bill_category_id.present? %>
-                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { :prompt => true, include_blank: "Please Select", selected: @utility_bill_category_id }, class: "form-control", id: "utility_bill_category_id" %>
+                    <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { :prompt => true, include_blank: "All", selected: @utility_bill_category_id }, class: "form-control", id: "utility_bill_category_id" %>
                     <% else %>
                     <%= form.collection_select :utility_bill_category_id, UtilityBillCategory.all, :id, :name, { prompt: "Filter by Category" }, class: "form-control", id: "utility_bill_category_id" %>
                     <% end %>
@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
          </div>
           <div class="col-md-2">
                     <% if @utility_bill_category_id.present? || @company_id.present? %>
-                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: true, include_blank: "Please Select", selected: @company_id }, class: "form-control", id: "company_id" %>
+                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: true, include_blank: "All", selected: @company_id }, class: "form-control", id: "company_id" %>
                     <% else %>
                     <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter By Company" }, class: "form-control", id: "company_id" %>
                     <% end %>
