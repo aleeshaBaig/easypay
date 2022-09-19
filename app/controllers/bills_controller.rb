@@ -102,7 +102,7 @@ class BillsController < ApplicationController
     def destroy
       @bill= Bill.find(params[:id])
       @bill.destroy
-      redirect_to root_path, status: :see_other
+      redirect_to bills_path, status: :see_other
     end
     private
       def bill_params

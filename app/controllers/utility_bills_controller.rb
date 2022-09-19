@@ -89,7 +89,7 @@ class UtilityBillsController < ApplicationController
 	def edit
 		@utility_bill = UtilityBill.find(params[:id])
 	end
-		def update
+	def update
 		@utility_bill = UtilityBill.find(params[:id])     
 		respond_to do |format|
 
@@ -102,11 +102,11 @@ class UtilityBillsController < ApplicationController
 			end
 		end
 	end
-		def destroy
+	def destroy
 		@utility_bill = UtilityBill.find(params[:id])
 		@utility_bill.destroy
 		respond_to do |format|
-			format.html { redirect_to root_path, notice: "Deleted"  }
+			format.html { redirect_to utility_bill_path, notice: "Deleted"  }
 			format.json { head :no_content}
 		end
 	end

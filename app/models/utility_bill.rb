@@ -9,7 +9,7 @@ class UtilityBill < ApplicationRecord
   validates :expected_reading_day, presence: true
   validates :focal_person, presence: true
   validates :nickname, presence: true
-  has_many :bills
+  has_many :bills, dependent: :destroy
   belongs_to :user
   belongs_to :utility_bill_category
   belongs_to :company
