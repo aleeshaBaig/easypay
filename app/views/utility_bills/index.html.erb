@@ -56,7 +56,7 @@ h1, h2, h3, h4, h5, h6 {
          </div>
           <div class="col-md-2">
                     <% if @utility_bill_category_id.present? || @company_id.present? %>
-                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, { prompt: true, include_blank: "Filter by Company", selected: @company_id }, class: "form-control", id: "company_id" %>
+                    <%= form.collection_select :company_id, Company.where(utility_bill_category_id: @utility_bill_category_id), :id, :name, {  include_blank: "Filter by Company", selected: @company_id }, class: "form-control", id: "company_id" %>
                     <% else %>
                     <%= form.collection_select :company_id, [], :id, :name, { prompt: "Filter by Company" }, class: "form-control", id: "company_id" %>
                     <% end %>
