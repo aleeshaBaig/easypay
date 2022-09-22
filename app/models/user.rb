@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :utility_bill_categories, dependent: :destroy
   has_many :educations
   has_many :utility_bill, dependent: :destroy
+  enum role: [:user, :admin]
 end
