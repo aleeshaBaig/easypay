@@ -2,7 +2,9 @@
 
 class Ability
   include CanCan::Ability
-
+   def initialize(admin)
+    can :manage, :all
+   end
   def initialize(user)
     # Define abilities for the user here. For example:
     #

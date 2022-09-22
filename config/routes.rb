@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  authenticated :user, ->(user) { user.admin?} do
+  get 'admin', to: 'admin#index'
+  get 'admin/bills'
+  get 'admin/utility_bills'
+  get'admin/users'
+  delete 'admin/delete', to: 'admin#destroy'
+ 
+  end
   resources :contact_informations
   resources :emergency_contacts
   resources :dependents

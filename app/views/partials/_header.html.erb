@@ -6,8 +6,8 @@
   height: 95px;
 }
 </style>
-<% if user_signed_in? %>  <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color: #d5f7cc !important;">
+<% if current_user %>  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-blue" style="background-color: #d5f7cc !important;" >
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
@@ -44,7 +44,7 @@
         <a class="nav-link" href="/personal_informations">View Profile</a>
       </li>
       <li class="nav-item">
-      <%  if ContactInformation.exists?(user_id: current_user.id) %>
+      <% if ContactInformation.exists?(user_id: current_user.id) %>
        <a class="nav-link" href="/contact_informations">Contact Information</a>
       <% else %>
       <a class="nav-link" href="/contact_informations/new">Contact Information</a>
@@ -61,10 +61,12 @@
 
       <div class=" align-items-center">
       <% if user_signed_in? %>
+ 
         <%= current_user.email %>
-        <%= link_to'Sign Out', destroy_user_session_path, class:"btn", data: { turbo_method: :delete}, style:"background-color:#1ac668;" %>
+ 
+        <%= link_to "Sign Out", destroy_user_session_path, class: "btn", data: { turbo_method: :delete }, style: "background-color:#1ac668;" %>
         <% else %>
-        <%= link_to'Sign In', new_user_session_path, class:"dropdown-item" %> 
+        <%= link_to "Sign In", new_user_session_path, class: "dropdown-item" %> 
         <button type="button" class="btn btn-primary me-3" >
           Sign up for free
         </button>
@@ -77,5 +79,5 @@
 </nav>
 <!-- Navbar -->
  <% else %>
-
+ 
 <% end %>
